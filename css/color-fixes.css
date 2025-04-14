@@ -1,0 +1,67 @@
+/* Color and style consistency fixes */
+
+/* Ensure consistent text colors */
+body {
+    color: #333333;
+  }
+  
+  /* Ensure consistent link colors */
+  a {
+    color: #0047ab;
+    transition: all 0.3s ease;
+  }
+  
+  a:hover {
+    color: #ffa500;
+  }
+  
+  /* Ensure consistent button styles */
+  .btn {
+    transition: all 0.3s ease;
+  }
+  
+  .primary-btn {
+    background-color: #0047ab;
+    color: #ffffff;
+  }
+  
+  .primary-btn:hover {
+    background-color: #00308f;
+  }
+  
+  .secondary-btn {
+    background-color: #ffa500;
+    color: #ffffff;
+  }
+  
+  .secondary-btn:hover {
+    background-color: #ff8c00;
+  }
+  
+  /* Ensure consistent section headers */
+  .section-header h2 {
+    color: #0047ab;
+  }
+  
+  .section-header h2::after {
+    background-color: #ffa500;
+  }
+  
+  /* Ensure consistent footer styling */
+  footer {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  footer h3::after {
+    background-color: #ffa500;
+  }
+  
+  footer a {
+    color: #cccccc;
+  }
+  
+  footer a:hover {
+    color: #ffa500;
+  }
+  

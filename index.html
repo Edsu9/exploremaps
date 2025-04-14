@@ -5,18 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Maps Travel and Tours - Sorsogon</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    <link rel="stylesheet" href="css/color-fixes.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Inline styles to fix hero text formatting */
+        .hero-content h1 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .hero-content p {
+            text-align: center !important;
+            margin: 15px auto;
+        }
+        
+        /* Remove text justification */
+        p {
+            text-align: inherit;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Explore Maps</h1>
-                <p>Travel & Tours</p>
+                <img src="images/logo.jpeg" alt="Explore Maps Logo">
+                <div class="logo-text">
+                    <h1>Explore Maps</h1>
+                    <p>Travel & Tours - Sorsogon</p>
+                </div>
             </div>
             <nav>
                 <div class="menu-toggle">
@@ -24,11 +49,11 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="company-profile.html">Company Profile</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="destinations.html">Destinations</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,16 +61,13 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Your Gateway to Unforgettable Travel Experiences</h1>
-            <p>Discover the beauty of Sorsogon and beyond with our expertly crafted tours</p>
-            <div class="cta-buttons">
-                <a href="services.html" class="btn primary-btn">Explore Our Tours <i class="fas fa-compass"></i></a>
-                <a href="contact.html" class="btn secondary-btn">Contact Us <i class="fas fa-paper-plane"></i></a>
+            <div style="display: block; margin-bottom: 10px;">
+                <h1>Travel Beyond Limits, Experience Beyond Imagination</h1>
             </div>
-        </div>
-        <div class="scroll-down">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+            <p>We don't just plan vacations, we create extraordinary experiences.</p>
+            <a href="contact.html" class="btn primary-btn">Book Your Tour Today</a>
         </div>
     </section>
 
@@ -59,19 +81,63 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Our Mission</h3>
-                    <p>At Explore Maps, we're dedicated to showcasing the natural beauty and cultural richness of Sorsogon while promoting sustainable tourism practices that benefit local communities.</p>
+                    <p>At Explore Maps, we're passionate about showcasing the breathtaking natural beauty and vibrant cultural heritage of Sorsogon, whil promoting sustainable toursim practices 
+                        that not only benefit local communities but also preserve the region's unique environment for future generations.</p>
                     <h3>Our Vision</h3>
-                    <p>To be the premier travel service provider in Sorsogon, known for exceptional experiences, personalized service, and commitment to responsible tourism.</p>
+                    <p>To be the leading travel service provider in Sorsogon, renowned for crafting unforgettable experiences, delivering personalized 
+                        service, and promoting responsible tourism practices.</p>
                     <a href="about.html" class="btn text-btn">Learn More About Us <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="about-image">
-                    <img src="images/croad.jpg?height=400&width=600" alt="Scenic view of Sorsogon">
+                    <img src="images/island.jpg" alt="Scenic view of Sorsogon">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Services -->
+    <!-- Popular Destinations -->
+    <section class="popular-destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Discover the beauty of Sorsogon</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="images/beach.jpg" alt="Beach">
+                    </div>
+                    <div class="destination-info">
+                        <h4>Pristine Beaches</h4>
+                        <p>Explore the beautiful coastlines and crystal clear waters</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="images/whaleshark.jpg" alt="Water Adventure">
+                    </div>
+                    <div class="destination-info">
+                        <h4>Whale Shark Encounters</h4>
+                        <p>Swim with the gentle giants of the ocean</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="images/lake.jpg" alt="Falls">
+                    </div>
+                    <div class="destination-info">
+                        <h4>Natural Wonders</h4>
+                        <p>Discover breathtaking waterfalls and natural parks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="destinations-cta">
+                <a href="local-attractions.html" class="btn primary-btn">View All Destinations <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
     <section class="services-preview">
         <div class="container">
             <div class="section-header">
@@ -81,106 +147,35 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-route"></i>
+                        <i class="fas fa-plane"></i>
                     </div>
-                    <h3>Customized Tour Packages</h3>
-                    <p>Tailored itineraries designed to match your interests, schedule, and budget.</p>
+                    <h3>Flight Bookings</h3>
+                    <p>International and domestic flight bookings tailored to your schedule and budget.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3>Group Tours</h3>
-                    <p>Join like-minded travelers for shared adventures and new friendships.</p>
+                    <h3>Tour Packages</h3>
+                    <p>Local and International tour packages for individuals, families, and groups.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Private Tours</h3>
-                    <p>Exclusive experiences for families, couples, or small groups.</p>
+                    <h3>Travel Insurance</h3>
+                    <p>Comprehensive travel insurance for peace of mind during your journey.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-shuttle-van"></i>
+                        <i class="fas fa-passport"></i>
                     </div>
-                    <h3>Transportation Services</h3>
-                    <p>Reliable vehicles for tours, airport transfers, and more.</p>
+                    <h3>Visa Processing</h3>
+                    <p>Expert assistance with visa applications for various destinations.</p>
                 </div>
             </div>
             <div class="services-cta">
                 <a href="services.html" class="btn primary-btn">View All Services <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Destinations -->
-    <section class="destinations-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Destinations</h2>
-                <p>Explore the wonders of Sorsogon</p>
-            </div>
-            <div class="destination-slider">
-                <div class="destination-slide active">
-                    <img src="images/whaleshark.jpg?height=500&width=800" alt="Donsol Whale Sharks">
-                    <div class="destination-info">
-                        <h3>Donsol</h3>
-                        <p>Experience swimming with gentle whale sharks in their natural habitat</p>
-                        <a href="destinations.html#donsol" class="btn text-btn">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="destination-slide">
-                    <img src="images/beach.jpg?height=500&width=800" alt="Matnog Pink Beach">
-                    <div class="destination-info">
-                        <h3>Matnog</h3>
-                        <p>Explore unspoiled islands, pink beaches, and crystal-clear waters</p>
-                        <a href="destinations.html#matnog" class="btn text-btn">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="destination-slide">
-                    <img src="images/lake.jpg?height=500&width=800" alt="Bulusan Volcano">
-                    <div class="destination-info">
-                        <h3>Bulusan Volcano</h3>
-                        <p>Hike through lush forests to this majestic active volcano</p>
-                        <a href="destinations.html#bulusan" class="btn text-btn">Discover More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="slider-controls">
-                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <div class="slider-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                    </div>
-                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Preview -->
-    <section class="testimonials-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Our Travelers Say</h2>
-                <p>Hear from those who've experienced our tours</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    <i class="fas fa-quote-left"></i>
-                    <p>Our family trip to Sorsogon was absolutely magical! The whale shark experience in Donsol was unforgettable, and our guide was knowledgeable and friendly. Explore Maps took care of every detail!</p>
-                    <div class="testimonial-author">
-                        <h4>Maria Santos</h4>
-                        <p>Sorsogn City, Philippines</p>
-                    </div>
-                </div>
-                <div class="testimonial-image">
-                    <img src="images/unknown.jpg?height=150&width=150" alt="Maria Santos">
-                </div>
-            </div>
-            <div class="testimonials-cta">
-                <a href="testimonials.html" class="btn secondary-btn">Read More Reviews <i class="fas fa-star"></i></a>
             </div>
         </div>
     </section>
@@ -199,43 +194,45 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>Explore Maps</h2>
-                    <p>Travel & Tours</p>
+                    <img src="images/logo.jpeg" alt="Explore Maps Logo">
+                    <div class="logo-text">
+                        <h1>Explore Maps</h1>
+                        <p>Travel & Tours - Sorsogon</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="company-profile.html">Company Profile</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="destinations.html">Destinations</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Sorsogon City</p>
-                    <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
-                    <p><i class="fas fa-envelope"></i> info@exploremaps.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>Unit 6, CLI Complex, Brgy. Cabid-an, Sorsogon City</span></p>
+                    <p><i class="fas fa-phone"></i> <span>+63-938-191-7648</span></p>
+                    <p><i class="fas fa-envelope"></i> <span style="word-break: break-word;">explore.mapstravelandtours@gmail.com</span></p>
                 </div>
                 <div class="footer-social">
                     <h3>Follow Us</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100063649732310" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/explore_mapstravelandtours?igsh=d2Z5aGF2bHc4NjR5" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@exploremapstraveltour?_t=ZS-8vWnZj3Eyqg&_r=1" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Explore Maps Travel and Tours. All Rights Reserved.</p>
+                <p>&copy; 2025 Explore Maps Travel and Tours. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/scroll-animations.js"></script>
 </body>
 </html>
-

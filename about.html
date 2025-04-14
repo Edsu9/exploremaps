@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Explore Maps Travel and Tours</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    <link rel="stylesheet" href="css/color-fixes.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Explore Maps</h1>
-                <p>Travel & Tours</p>
+                <img src="images/logo.jpeg" alt="Explore Maps Logo">
+                <div class="logo-text">
+                    <h1>Explore Maps</h1>
+                    <p>Travel & Tours - Sorsogon</p>
+                </div>
             </div>
             <nav>
                 <div class="menu-toggle">
@@ -21,40 +30,42 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="company-profile.html">Company Profile</a></li>
                     <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="destinations.html">Destinations</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="banner-content">
-            <h1>About Us</h1>
-            <p>Learn more about Explore Maps Travel and Tours</p>
-        </div>
-    </section>
+    <!-- About Banner -->
+    <section class="combined-banner-section" style="background-image: url('images/whaleshark.jpg');">
+  <div class="banner-content">
+    <h1>ABOUT US</h1>
+  </div>
+</section>
 
-    <!-- Company Overview -->
-    <section class="company-overview">
+<!-- Add CTA Section -->
+<section class="cta-section-new">
+  <div class="container">
+    <h2>Ready to Experience Sorsogon with Us?</h2>
+    <p>Let our team of experts guide you through the wonders of our province</p>
+    <a href="contact.html" class="btn primary-btn">Contact Us Today</a>
+  </div>
+</section>
+
+    <!-- About Content -->
+    <section class="about-content-section">
         <div class="container">
             <div class="section-header">
                 <h2>Our Story</h2>
-                <p>How Explore Maps began</p>
+                <p>Passionate about travel, dedicated to excellence</p>
             </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="/placeholder.svg?height=400&width=600" alt="Explore Maps Team">
-                </div>
-                <div class="about-text">
-                    <p>Founded in 2015, Explore Maps Travel and Tours was born from a passion for showcasing the hidden gems of Sorsogon to the world. What started as a small operation with just two tour guides has grown into a premier travel service provider in the region.</p>
-                    <p>Our journey began when our founder, a native of Sorsogon, realized that many travelers were missing out on the authentic experiences that this beautiful province has to offer. With deep local knowledge and a commitment to sustainable tourism, we set out to create tours that would not only delight visitors but also benefit local communities.</p>
-                    <p>Today, we're proud to have helped thousands of travelers create unforgettable memories in Sorsogon, while maintaining our commitment to responsible tourism practices and supporting local economies.</p>
-                </div>
+            <div class="about-text-full">
+                <p>Mabuhay! Explore Maps Travel and Tours aims to deliver exceptional service that meets the diverse needs of our clients, ensuring their complete satisfaction. Our team comprises seasoned professionals dedicated to providing unparalleled travel experiences. We believed that our clients deserve effortless, comfortable, and memorable adventures that make their trips and vacations truly unforgettable.</p>
+                <p>Explore Maps Travel and Tours offer a comprehensive range of travel services, including domestic and International flight bookings, as well as hotel accommodation tailored to your needs and interest. Our travel agency recognize the importance of travel documents to have a smooth journey, so we ensure that you're fully equipped with all the necessary paperwork such as visa processing, travel Insurance, and other necessary documents needed in your trip. Furthermore, we also offer tour packages locally and internationally, Airbnb, car rentals and 24/7 customer service. Driven by a passion for exploration and a proven track record of delivering outstanding travel experiences, Explore Maps Travel and Tours is your passport to adventure.</p>
             </div>
         </div>
     </section>
@@ -62,20 +73,24 @@
     <!-- Mission & Vision -->
     <section class="mission-vision">
         <div class="container">
+            <div class="section-header">
+                <h2>Our Mission & Vision</h2>
+                <p>Guiding principles that drive our service</p>
+            </div>
             <div class="mission-vision-content">
                 <div class="mission-box">
                     <div class="icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
                     <h3>Our Mission</h3>
-                    <p>To provide exceptional travel experiences that showcase the natural beauty and cultural richness of Sorsogon, while promoting sustainable tourism practices that preserve the environment and benefit local communities.</p>
+                    <p>At Explore Maps, were passionate about showcasing the breathtaking natural beauty and vibrant cultural heritage of Sorsogon, while promoting sustainable tourism practices that not only benefit local communities but also preserve the region's unique environment for future generations.</p>
                 </div>
                 <div class="vision-box">
                     <div class="icon">
                         <i class="fas fa-eye"></i>
                     </div>
                     <h3>Our Vision</h3>
-                    <p>To be recognized as the premier travel service provider in Sorsogon, known for creating authentic, memorable experiences that connect travelers with the heart and soul of our province, while setting the standard for responsible tourism in the region.</p>
+                    <p>To be the leading travel service provider in Sorsogon, renowned for crafting unforgettable experiences, delivering personalized service, and promoting responsible tourism practices.</p>
                 </div>
             </div>
         </div>
@@ -94,75 +109,30 @@
                         <i class="fas fa-leaf"></i>
                     </div>
                     <h3>Sustainability</h3>
-                    <p>We are committed to environmentally responsible practices that preserve Sorsogon's natural beauty for future generations.</p>
+                    <p>We are dedicated to sustainable practices that protect Sorsogon's pristine environment and preserve its natural charm for generations to come.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h3>Community</h3>
-                    <p>We actively support local communities through fair partnerships and by promoting local businesses and artisans.</p>
+                    <p>We actively empower local communities through equitable partnerships and by promoting local businesses and artisans.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3>Passion</h3>
-                    <p>We are passionate about sharing the beauty and culture of Sorsogon with travelers from around the world.</p>
+                    <p>We are dedicated to showcasing the breathtaking beauty and rich cultural heritage of Sorsogon with travelers from across the globe. Excellence -We pursue perfection in every detail of our service, from meticulous planning to flawless execution.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-star"></i>
                     </div>
                     <h3>Excellence</h3>
-                    <p>We strive for excellence in every aspect of our service, from planning to execution.</p>
+                    <p>We pursue perfection in every detail of our service, from meticulous planning to flawless execution.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Meet the Team -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Meet Our Team</h2>
-                <p>The faces behind your unforgettable experiences</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/OIP1.jpg?height=300&width=300" alt="Team Member">
-                    </div>
-                    <h3>Juan Dela Cruz</h3>
-                    <p class="member-role">Founder & CEO</p>
-                    <p class="member-bio">A native of Sorsogon with over 15 years of experience in the tourism industry, Juan's passion for his homeland drives our company vision.</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="images/OIP2.jpg?height=300&width=300" alt="Team Member">
-                    </div>
-                    <h3>Maria Santos</h3>
-                    <p class="member-role">Operations Manager</p>
-                    <p class="member-bio">With her meticulous attention to detail, Maria ensures that every tour runs smoothly from start to finish.</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/OIP3.jpg?height=300&width=300" alt="Team Member">
-                    </div>
-                    <h3>Pedro Reyes</h3>
-                    <p class="member-role">Lead Tour Guide</p>
-                    <p class="member-bio">An expert on local history and culture, Pedro brings Sorsogon's stories to life for our guests.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Experience Sorsogon with Us?</h2>
-            <p>Let our team of experts guide you through the wonders of our province</p>
-            <a href="contact.html" class="btn primary-btn">Contact Us Today</a>
         </div>
     </section>
 
@@ -171,43 +141,45 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>Explore Maps</h2>
-                    <p>Travel & Tours</p>
+                    <img src="images/logo.jpeg" alt="Explore Maps Logo">
+                    <div class="logo-text">
+                        <h1>Explore Maps</h1>
+                        <p>Travel & Tours - Sorsogon</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="company-profile.html">Company Profile</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="destinations.html">Destinations</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Sorsogon City</p>
-                    <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
-                    <p><i class="fas fa-envelope"></i> info@exploremaps.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>Unit 6, CLI Complex, Brgy. Cabid-an, Sorsogon City</span></p>
+                    <p><i class="fas fa-phone"></i> <span>+63-938-191-7648</span></p>
+                    <p><i class="fas fa-envelope"></i> <span style="word-break: break-word;">explore.mapstravelandtours@gmail.com</span></p>
                 </div>
                 <div class="footer-social">
                     <h3>Follow Us</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100063649732310" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/explore_mapstravelandtours?igsh=d2Z5aGF2bHc4NjR5" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@exploremapstraveltour?_t=ZS-8vWnZj3Eyqg&_r=1" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Explore Maps Travel and Tours. All Rights Reserved.</p>
+                <p>&copy; 2025 Explore Maps Travel and Tours. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/scroll-animations.js"></script>
 </body>
 </html>
-

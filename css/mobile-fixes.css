@@ -1,0 +1,675 @@
+/* Mobile fixes for Explore Maps website */
+
+/* Fix for mobile menu and logo text visibility */
+@media screen and (max-width: 768px) {
+  /* Make logo text visible on mobile */
+  .logo-text {
+    display: block !important;
+    margin-left: 10px !important;
+  }
+
+  .logo-text h1 {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .logo-text p {
+    font-size: 0.7rem !important;
+  }
+
+  /* Prevent email overflow in footer */
+  .footer-contact p {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Make footer more mobile-friendly */
+  .footer-content {
+    text-align: center !important;
+    gap: 30px !important;
+  }
+
+  .footer-logo,
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    width: 100% !important;
+  }
+
+  /* Mobile menu improvements */
+  .menu-toggle {
+    display: block !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
+  }
+
+  .nav-menu {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 80% !important;
+    height: 100vh !important;
+    background-color: white !important;
+    transition: all 0.3s ease !important;
+    z-index: 999 !important;
+    padding-top: 80px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .nav-menu.active {
+    left: 0 !important;
+  }
+}
+
+/* FAQ styles to ensure consistency across pages */
+.toggle-icon {
+  cursor: pointer !important;
+  padding: 5px !important;
+}
+
+.faq-question {
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.faq-answer {
+  padding: 15px !important;
+  background-color: #f9f9f9 !important;
+  border-radius: 0 0 8px 8px !important;
+  margin-top: 5px !important;
+  display: block; /* Make answers visible by default */
+}
+
+/* NEW FIXES */
+
+/* 2. Center align footer logo and text */
+.footer-logo {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.footer-logo img {
+  margin: 0 auto 15px !important;
+}
+
+/* 3. Fix alignment of contact icons */
+.footer-contact p {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.footer-contact p i {
+  min-width: 20px !important;
+  margin-right: 10px !important;
+  margin-top: 4px !important; /* Align with first line of text */
+}
+
+/* Center the Contact Us heading in the footer */
+.footer-contact h3 {
+  text-align: center !important;
+}
+
+/* Center the Contact Us heading's after element (underline) */
+.footer-contact h3::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Fix email overflow in contact section */
+.footer-contact p .fa-envelope + span {
+  display: inline-block !important;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+/* Hide the arrow at the bottom of the page */
+.scroll-to-top,
+a[href="#"] {
+  display: none !important;
+}
+
+/* Additional improvements for mobile */
+@media screen and (max-width: 768px) {
+  /* Keep the footer contact text left-aligned while the heading is centered */
+  .footer-contact {
+    text-align: center !important;
+  }
+
+  .footer-contact p {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding-left: 20px !important; /* Add some padding to better align the text */
+  }
+
+  /* Keep the footer logo centered */
+  .footer-logo {
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* Ensure email doesn't overflow on small screens */
+  .footer-contact p .fa-envelope + span {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Add these rules to fix the contact page width issue */
+
+/* Fix the contact page width issue - remove extra space on right side */
+.combined-banner-section,
+.cta-section-new {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for the entire body to prevent horizontal scrolling */
+html,
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix container width to ensure proper fitting */
+.container {
+  width: 100% !important;
+  max-width: var(--container-width) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure images don't cause overflow */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Fix for the banner image to ensure it's properly contained */
+.combined-banner-section {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Add this CSS to ensure social icons are visible and centered */
+.social-icons {
+  display: flex !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  margin-top: 15px !important;
+}
+
+.social-icons a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 45px !important;
+  height: 45px !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  color: var(--light-text) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-size: 1.2rem !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.social-icons a:hover {
+  transform: translateY(-8px) !important;
+  color: var(--light-text) !important;
+  background-color: var(--primary-color) !important;
+}
+
+/* Remove any rules that might be hiding the social icons */
+.footer-social {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Center the "Follow Us" heading in the footer */
+.footer-social h3 {
+  text-align: center !important;
+}
+
+/* Center the "Follow Us" heading's after element (underline) */
+.footer-social h3::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Center all section headers and their content */
+.section-header {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.section-header h2,
+.section-header p {
+  text-align: center !important;
+}
+
+/* Center all content in about, services, and other sections */
+.about-content,
+.services-content,
+.mission-vision-content,
+.values-grid,
+.profile-content,
+.intro-content,
+.map-directions,
+.faq-container {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Make sure all headings are centered */
+h1,
+h2,
+h3,
+.banner-content {
+  text-align: center !important;
+}
+
+/* Add these fixes for the social icons in the contact page */
+.social-connect .social-icons a {
+  background-color: #0047ab !important; /* Primary blue background */
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  margin: 0 5px !important;
+}
+
+.social-connect .social-icons a i {
+  color: #ffffff !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+
+.social-connect .social-icons a:hover {
+  background-color: #ffa500 !important; /* Orange on hover */
+  transform: translateY(-5px) !important;
+}
+
+/* Fix for the destination card images to have consistent heights */
+.destination-image {
+  height: 250px !important; /* Fixed height */
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.destination-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* This ensures the image covers the area without distortion */
+  object-position: center !important;
+}
+
+/* Also fix the destination cards in the grid to have consistent heights */
+.destination-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.destination-info {
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Fix for the attractions page images as well */
+.attraction-image {
+  height: 400px !important;
+  overflow: hidden !important;
+}
+
+.attraction-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* NEW: Center contact information in info cards */
+.info-card {
+  text-align: center !important;
+}
+
+.info-card .info-icon {
+  display: block !important;
+  margin: 0 auto 20px !important;
+  text-align: center !important;
+}
+
+.info-card h3 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+}
+
+.info-card p {
+  text-align: center !important;
+  margin-bottom: 8px !important;
+}
+
+/* Specifically style the office hours, email, phone and address */
+.info-card p:nth-child(3),
+.info-card p:nth-child(4),
+.info-card p:nth-child(5),
+.info-card p:nth-child(6) {
+  display: block !important;
+  text-align: center !important;
+  margin: 5px auto !important;
+}
+
+/* Style for the email address to prevent overflow */
+.info-card a[href^="mailto"] {
+  word-break: break-word !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+}
+
+/* Make sure the contact information is properly spaced */
+.info-card p + p {
+  margin-top: 5px !important;
+}
+
+/* Ensure proper spacing between sections of contact info */
+.info-card p:empty {
+  height: 10px !important;
+}
+
+/* Add these rules to center the TIN and Certificate No. text */
+.cert-details p {
+  text-align: center !important;
+  margin: 5px auto !important;
+}
+
+/* Center the cert-details section */
+.cert-details {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Center the cert-item elements */
+.cert-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.cert-icon {
+  margin-right: 0 !important;
+  margin-bottom: 15px !important;
+  text-align: center !important;
+}
+
+/* Fix service icons centering on all devices, especially mobile */
+.service-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.service-icon {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto 20px !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.service-icon i {
+  display: inline-block !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* Also fix the service items in the services page */
+.service-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.service-item .service-icon {
+  margin-right: 0 !important;
+  margin-bottom: 15px !important;
+}
+
+.service-text {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.service-text h3,
+.service-text p {
+  text-align: center !important;
+}
+
+/* Make sure this applies on all screen sizes */
+@media screen and (min-width: 768px) {
+  .service-icon {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 20px !important;
+  }
+
+  .cert-item {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .cert-icon {
+    margin-right: 0 !important;
+    margin-bottom: 15px !important;
+  }
+
+  .cert-details {
+    text-align: center !important;
+  }
+}
+
+/* COMPLETELY REVISED APPROACH FOR CTA PARAGRAPHS */
+
+/* First, remove the general justify rule that's affecting all paragraphs */
+p {
+  text-align: inherit; /* Reset to default text alignment */
+}
+
+/* Then add specific rules for paragraphs that should be justified */
+.about-text-full p,
+.profile-content p,
+.intro-content p,
+.attraction-content p,
+.service-text p,
+.faq-answer p {
+  text-align: justify !important;
+}
+
+/* Now specifically target the CTA paragraphs to ensure they're centered */
+.cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+  -moz-text-align-last: center !important;
+  text-align-last: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 800px !important;
+  display: block !important;
+}
+
+/* Add specific styles for the "Let our team of experts..." paragraph */
+.about-banner + .cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+}
+
+/* Add extremely specific selectors for the CTA paragraphs */
+.cta-section-new .container p,
+.cta-section-new > .container > p {
+  text-align: center !important;
+  text-justify: none !important;
+}
+
+/* Add a media query specifically for mobile */
+@media screen and (max-width: 768px) {
+  /* Override any other rules that might be causing justification */
+  .cta-section-new p,
+  .cta-section-new .container p,
+  .combined-banner-section + .cta-section-new p,
+  .about-banner + .cta-section-new p,
+  .services-banner + .cta-section-new p,
+  .attractions-banner + .cta-section-new p,
+  .contact-banner + .cta-section-new p,
+  .company-banner + .cta-section-new p {
+    text-align: center !important;
+    text-justify: none !important;
+    -moz-text-align-last: center !important;
+    text-align-last: center !important;
+  }
+
+  /* Force center alignment for these specific paragraphs */
+  p:first-of-type {
+    text-align: center !important;
+  }
+}
+
+/* Add inline styles via JavaScript to ensure centering */
+
+/* Add these specific fixes for contact information in the footer and other areas */
+
+/* Fix for contact information display */
+.footer-contact p,
+.error-contact-info p,
+.info-card p {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+}
+
+.footer-contact p i,
+.error-contact-info p i,
+.info-card .info-icon,
+.info-card p i {
+  min-width: 20px !important;
+  margin-right: 10px !important;
+  margin-top: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.footer-contact p span,
+.error-contact-info p span,
+.info-card p span {
+  flex: 1 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: calc(100% - 30px) !important;
+}
+
+/* Specific mobile fixes */
+@media screen and (max-width: 576px) {
+  .footer-contact p,
+  .error-contact-info p,
+  .info-card p {
+    font-size: 0.85rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-contact,
+  .error-contact-info,
+  .info-card {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Ensure email addresses don't overflow */
+  .footer-contact p .fa-envelope + span,
+  .error-contact-info p .fa-envelope + span,
+  .info-card p .fa-envelope + span {
+    font-size: 0.8rem !important;
+  }
+
+  /* Fix for error page contact info */
+  .error-contact-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .error-content {
+    padding: 20px !important;
+  }
+
+  .error-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .error-actions .btn {
+    width: 100% !important;
+  }
+}
+
+/* Ensure all containers have proper width constraints */
+.container {
+  width: 100% !important;
+  max-width: var(--container-width) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Fix for all sections to prevent horizontal overflow */
+section,
+footer,
+header {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix for all text elements to prevent overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+}

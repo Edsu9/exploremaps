@@ -1,0 +1,31 @@
+/* Specific fix for the hero text */
+
+/* Remove justify from all paragraphs */
+p {
+    text-align: inherit; /* Reset to default text alignment */
+  }
+  
+  /* Center the hero content */
+  .hero-content {
+    text-align: center !important;
+  }
+  
+  /* Make hero paragraph centered */
+  .hero-content p {
+    text-align: center !important;
+  }
+  
+  /* Fix the hero heading to ensure no unwanted spacing */
+  .hero-content h1 {
+    display: inline !important; /* Make headings display inline */
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Create a wrapper for the headings to keep them together */
+  .hero-heading-wrapper {
+    display: block !important;
+    margin-bottom: 15px !important;
+  }
+  
