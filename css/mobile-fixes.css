@@ -352,3 +352,51 @@ h3,
   object-fit: cover !important;
   object-position: center !important;
 }
+
+/* NEW: Center contact information in info cards */
+.info-card {
+  text-align: center !important;
+}
+
+.info-card .info-icon {
+  display: block !important;
+  margin: 0 auto 20px !important;
+  text-align: center !important;
+}
+
+.info-card h3 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+}
+
+.info-card p {
+  text-align: center !important;
+  margin-bottom: 8px !important;
+}
+
+/* Specifically style the office hours, email, phone and address */
+.info-card p:nth-child(3),
+.info-card p:nth-child(4),
+.info-card p:nth-child(5),
+.info-card p:nth-child(6) {
+  display: block !important;
+  text-align: center !important;
+  margin: 5px auto !important;
+}
+
+/* Style for the email address to prevent overflow */
+.info-card a[href^="mailto"] {
+  word-break: break-word !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+}
+
+/* Make sure the contact information is properly spaced */
+.info-card p + p {
+  margin-top: 5px !important;
+}
+
+/* Ensure proper spacing between sections of contact info */
+.info-card p:empty {
+  height: 10px !important;
+}
