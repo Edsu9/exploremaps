@@ -400,3 +400,99 @@ h3,
 .info-card p:empty {
   height: 10px !important;
 }
+
+/* Add these rules to center the TIN and Certificate No. text */
+.cert-details p {
+  text-align: center !important;
+  margin: 5px auto !important;
+}
+
+/* Center the cert-details section */
+.cert-details {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Center the cert-item elements */
+.cert-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.cert-icon {
+  margin-right: 0 !important;
+  margin-bottom: 15px !important;
+  text-align: center !important;
+}
+
+/* Fix service icons centering on all devices, especially mobile */
+.service-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.service-icon {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto 20px !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.service-icon i {
+  display: inline-block !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* Also fix the service items in the services page */
+.service-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.service-item .service-icon {
+  margin-right: 0 !important;
+  margin-bottom: 15px !important;
+}
+
+.service-text {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.service-text h3,
+.service-text p {
+  text-align: center !important;
+}
+
+/* Make sure this applies on all screen sizes */
+@media screen and (min-width: 768px) {
+  .service-icon {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 20px !important;
+  }
+
+  .cert-item {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .cert-icon {
+    margin-right: 0 !important;
+    margin-bottom: 15px !important;
+  }
+
+  .cert-details {
+    text-align: center !important;
+  }
+}
