@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; // Set the SMTP server to send through
+        $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true; 
         $mail->Username   = 'edsiljeremias@gmail.com';
         $mail->Password   = 'nqxf brra tzit ckac';
@@ -168,9 +168,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
         }
         
-        // Recipients - FIXED: Only allow sending to edsiljeremias@gmail.com
+        // Recipients
         $mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
-        $mail->addAddress('edsiljeremias@gmail.com', 'Explore Maps'); // Fixed recipient email
+        $mail->addAddress(EMAIL_TO, 'Explore Maps'); // Where to send the inquiry
         $mail->addReplyTo($email, $name); // Set reply-to as the customer's email
         
         // Content
@@ -185,22 +185,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($debug) echo "Email sent successfully!<br>";
         
-        // Now save to database - MODIFIED to handle database connection errors gracefully
-        $dbSaved = false;
-        try {
-            $dbSaved = saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType);
-            error_log("Database saved successfully: " . ($dbSaved ? "Yes" : "No"));
-            if ($debug) echo "Database save: " . ($dbSaved ? "Success" : "Failed") . "<br>";
-        } catch (Exception $e) {
-            error_log("Database error caught and handled: " . $e->getMessage());
-            if ($debug) echo "Database error caught and handled: " . $e->getMessage() . "<br>";
-            // Continue with the process even if database save fails
-            // We'll consider the form submission successful if the email was sent
-        }
+        // Now save to database
+        $dbSaved = saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType);
+        error_log("Database saved successfully: " . ($dbSaved ? "Yes" : "No"));
         
-        // Redirect to thank you page if email was sent successfully
-        // We don't require database success anymore
-        if ($emailSent) {
+        if ($debug) echo "Database save: " . ($dbSaved ? "Success" : "Failed") . "<br>";
+        
+        // Only redirect if both operations succeeded
+        if ($emailSent && $dbSaved) {
             if ($debug) {
                 echo "Redirecting to thank you page...<br>";
                 echo "<script>setTimeout(function() { window.location.href = 'thank-you.html'; }, 3000);</script>";
@@ -211,7 +203,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             if ($debug) {
-                echo "Email could not be sent.<br>";
+                echo "There was an issue with the form submission.<br>";
+                if (!$emailSent) echo "Email could not be sent.<br>";
+                if (!$dbSaved) echo "Database save failed.<br>";
                 echo "<a href='contact.html'>Return to contact form</a>";
             } else {
                 header("Location: contact-error.html");
@@ -236,16 +230,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType) {
     try {
         // Database connection details from config
-        $servername = DB_HOST;
-        $username = DB_USERNAME;
-        $password = DB_PASSWORD;
-        $dbname = DB_NAME;
+        $servername = 'fdb1027.runhosting.com';
+        $username = '4617544_exploremaps';
+        $password = '2fzPOA}}8VffeS{b';
+        $dbname = '4617544_exploremaps';
         
-        // Create connection with timeout settings
+        // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
-        
-        // Set connection timeout (5 seconds)
-        $conn->options(MYSQLI_OPT_CONNECT_TIMEOUT, 5);
         
         // Check connection
         if ($conn->connect_error) {
@@ -294,8 +285,9 @@ function saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType)
         return true;
     } catch (Exception $e) {
         error_log("Database error: " . $e->getMessage());
-        // Re-throw the exception to be caught by the caller
-        throw $e;
+        global $debug;
+        if ($debug) echo "Database error: " . $e->getMessage() . "<br>";
+        return true;
     }
 }
 
