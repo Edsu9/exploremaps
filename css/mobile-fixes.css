@@ -558,3 +558,155 @@ p {
 }
 
 /* Add inline styles via JavaScript to ensure centering */
+
+/* Add these specific fixes for contact information in the footer and other areas */
+
+/* Fix for contact information display */
+.footer-contact p,
+.error-contact-info p,
+.info-card p {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+}
+
+.footer-contact p span,
+.error-contact-info p span,
+.info-card p span {
+  flex: 1 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: calc(100% - 30px) !important;
+}
+
+/* Specific mobile fixes */
+@media screen and (max-width: 576px) {
+  .footer-contact p,
+  .error-contact-info p,
+  .info-card p {
+    font-size: 0.85rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-contact,
+  .error-contact-info,
+  .info-card {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Ensure email addresses don't overflow */
+  .footer-contact p .fa-envelope + span,
+  .error-contact-info p .fa-envelope + span,
+  .info-card p .fa-envelope + span {
+    font-size: 0.8rem !important;
+  }
+
+  /* Fix for error page contact info */
+  .error-contact-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .error-content {
+    padding: 20px !important;
+  }
+
+  .error-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .error-actions .btn {
+    width: 100% !important;
+  }
+}
+
+/* Ensure all containers have proper width constraints */
+.container {
+  width: 100% !important;
+  max-width: var(--container-width) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Fix for all sections to prevent horizontal overflow */
+section,
+footer,
+header {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix for all text elements to prevent overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+}
+
+* Center the CTA section paragraphs */
+.cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 800px !important;
+}
+
+/* Override the general justify rule for these specific sections */
+.cta-section-new p,
+.about-banner + .cta-section-new p,
+.services-banner + .cta-section-new p,
+.attractions-banner + .cta-section-new p,
+.contact-banner + .cta-section-new p,
+.company-banner + .cta-section-new p,
+.combined-banner-section + .cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+}
+
+/* Add !important to override the general p rule */
+p {
+  text-align: justify;
+}
+
+/* Add a more specific rule to override the justify for CTA paragraphs */
+body .cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+}
+
+/* Add a media query specifically for mobile */
+@media screen and (max-width: 768px) {
+  .cta-section-new p {
+    text-align: center !important;
+    text-justify: none !important;
+  }
+
+  /* Override any other rules that might be causing justification */
+  p.cta-text,
+  .cta-section-new p {
+    text-align: center !important;
+    text-justify: none !important;
+  }
+}
