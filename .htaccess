@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Protect config.php from direct access
 <Files "config.php">
     Order Allow,Deny
@@ -20,26 +19,3 @@ php_flag display_errors off
 php_flag html_errors off
 php_value docref_root 0
 php_value docref_ext 0
-=======
-# Protect config.php from direct access
-<Files "config.php">
-    Order Allow,Deny
-    Deny from all
-</Files>
-
-# Redirect errors to custom error pages
-ErrorDocument 404 /404.html
-ErrorDocument 500 /500.html
-
-# Enable HTTPS redirection (uncomment when SSL is configured)
-# RewriteEngine On
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# PHP error handling
-php_flag display_startup_errors off
-php_flag display_errors off
-php_flag html_errors off
-php_value docref_root 0
-php_value docref_ext 0
->>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa
