@@ -2,11 +2,9 @@
 
 /* Base animation classes */
 .animate {
-<<<<<<< HEAD
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
-  }
   
   .animate.active {
     opacity: 1;
@@ -217,7 +215,6 @@
     transform: scaleX(1);
   }
   
-=======
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -431,4 +428,3 @@ footer::after {
 footer.active::after {
   transform: scaleX(1);
 }
->>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa

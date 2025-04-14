@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // This is a standalone script to fix the menu toggle and FAQ functionality
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Simple fix script loaded")
@@ -129,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Simple fix script completed")
 })
-=======
+
 // This is a standalone script to fix the menu toggle and FAQ functionality
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Simple fix script loaded")
@@ -260,4 +259,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Simple fix script completed")
 })
->>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa

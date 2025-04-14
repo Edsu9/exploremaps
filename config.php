@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 // Configuration file for sensitive information
 // IMPORTANT: This file should be placed outside your web root if possible
@@ -23,7 +22,7 @@ define('DB_NAME', '4617544_exploremaps');
 // Debug Mode (set to false in production)
 define('DEBUG_MODE', false); // Set to false on production
 ?>
-=======
+
 <?php
 // Configuration file for sensitive information
 // IMPORTANT: This file should be placed outside your web root if possible
@@ -48,4 +47,3 @@ define('DB_NAME', '4617544_exploremaps');
 // Debug Mode (set to false in production)
 define('DEBUG_MODE', false); // Set to false on production
 ?>
->>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa

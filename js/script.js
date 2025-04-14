@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
   // Create scroll indicator
   const scrollIndicator = document.createElement("div")
@@ -1171,7 +1170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", adjustPageBanners)
   }
 })
-=======
+
 document.addEventListener("DOMContentLoaded", () => {
   // Create scroll indicator
   const scrollIndicator = document.createElement("div")
@@ -2344,4 +2343,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", adjustPageBanners)
   }
 })
->>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa
