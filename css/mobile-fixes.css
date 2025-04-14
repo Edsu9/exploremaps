@@ -209,43 +209,12 @@ img {
   background-position: center !important;
 }
 
-/* ENHANCED SOCIAL ICONS FIX - Make them visible and properly styled */
-.footer-social {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-  width: 100% !important;
-}
-
-.footer-social h3 {
-  text-align: center !important;
-  display: block !important;
-  margin-bottom: 20px !important;
-  position: relative !important;
-  padding-bottom: 10px !important;
-}
-
-.footer-social h3::after {
-  content: "" !important;
-  position: absolute !important;
-  width: 50px !important;
-  height: 2px !important;
-  background-color: var(--secondary-color) !important;
-  bottom: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-
+/* Add this CSS to ensure social icons are visible and centered */
 .social-icons {
   display: flex !important;
   gap: 20px !important;
   justify-content: center !important;
-  align-items: center !important;
-  margin: 0 auto !important;
   margin-top: 15px !important;
-  width: 100% !important;
 }
 
 .social-icons a {
@@ -256,7 +225,7 @@ img {
   height: 45px !important;
   background-color: rgba(255, 255, 255, 0.1) !important;
   border-radius: 50% !important;
-  color: #ffffff !important; /* Explicit white color */
+  color: var(--light-text) !important;
   transition: all 0.3s ease !important;
   position: relative !important;
   overflow: hidden !important;
@@ -265,21 +234,28 @@ img {
   visibility: visible !important;
 }
 
-.social-icons a i {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #ffffff !important; /* Explicit white color */
-}
-
 .social-icons a:hover {
   transform: translateY(-8px) !important;
-  color: #ffffff !important;
-  background-color: #0047ab !important; /* Primary color */
+  color: var(--light-text) !important;
+  background-color: var(--primary-color) !important;
 }
 
-.social-icons a:hover i {
-  color: #ffffff !important;
+/* Remove any rules that might be hiding the social icons */
+.footer-social {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Center the "Follow Us" heading in the footer */
+.footer-social h3 {
+  text-align: center !important;
+}
+
+/* Center the "Follow Us" heading's after element (underline) */
+.footer-social h3::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
 }
 
 /* Center all section headers and their content */
@@ -289,281 +265,90 @@ img {
   margin-right: auto !important;
 }
 
-/* Center all section header paragraphs */
-.section-header p {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  max-width: 800px !important;
-}
-
-/* Center all headings and paragraphs that are direct children of sections */
-section > h2,
-section > p,
-section > .container > h2,
-section > .container > p,
-.about-text h3,
-.about-text p,
-.mission-box h3,
-.mission-box p,
-.vision-box h3,
-.vision-box p,
-.profile-content p,
-.intro-content p,
-.about-text-full p {
-  text-align: center !important;
-}
-
-/* Center the underline after h2 elements */
-h2::after {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-
-/* Center the mission and vision boxes content */
-.mission-box,
-.vision-box {
-  text-align: center !important;
-}
-
-.mission-box .icon,
-.vision-box .icon {
-  margin: 0 auto 20px !important;
-}
-
-/* Center the about section content */
-.about-content {
-  text-align: center !important;
-}
-
-.about-text .btn {
-  margin: 0 auto !important;
-  display: table !important;
-}
-
-/* Center the service items */
-.service-item {
-  text-align: center !important;
-  flex-direction: column !important;
-}
-
-.service-icon {
-  margin: 0 auto 15px !important;
-}
-
-.service-text {
-  text-align: center !important;
-}
-
-/* Center the attraction content */
-.attraction-content {
-  text-align: center !important;
-}
-
-.attraction-details {
-  justify-content: center !important;
-}
-
-.attraction-content .btn {
-  margin: 0 auto !important;
-  display: table !important;
-}
-
-/* Center the destinations CTA */
-.destinations-cta,
-.services-cta {
-  text-align: center !important;
-}
-
-/* Center the map directions */
-.map-directions {
-  text-align: center !important;
-}
-
-/* Center the thank you and error content */
-.thank-you-content,
-.error-content {
-  text-align: center !important;
-}
-
-/* Center the error contact info */
-.error-contact-info {
-  text-align: center !important;
-}
-
-/* Center the thank you and error actions */
-.thank-you-actions,
-.error-actions {
-  justify-content: center !important;
-}
-
-/* Center the certifications */
-.cert-item {
-  flex-direction: column !important;
-  text-align: center !important;
-}
-
-.cert-icon {
-  margin: 0 auto 15px !important;
-}
-
-.cert-details {
-  text-align: center !important;
-}
-
-/* SPECIFIC FIX FOR SECTION SUBHEADINGS */
-/* This targets the specific "Discover the beauty of Sorsogon" text and similar subheadings */
-.section-header + p,
-.destinations-grid + p,
-.services-grid + p,
-.popular-destinations p,
-.services-preview p,
-.section-header ~ p {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-  width: 100% !important;
-}
-
-/* Center all paragraphs that follow headings */
-h1 + p,
-h2 + p,
-h3 + p,
-h4 + p,
-h5 + p,
-h6 + p {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Ensure all section headers are centered */
 .section-header h2,
 .section-header p {
   text-align: center !important;
+}
+
+/* Center all content in about, services, and other sections */
+.about-content,
+.services-content,
+.mission-vision-content,
+.values-grid,
+.profile-content,
+.intro-content,
+.map-directions,
+.faq-container {
+  text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* Center the about preview section */
-.about-preview .about-text {
-  text-align: center !important;
-}
-
-/* Center the services preview section */
-.services-preview .service-card {
-  text-align: center !important;
-}
-
-/* Center the core values section */
-.core-values .value-card {
-  text-align: center !important;
-}
-
-/* Center the company profile section */
-.company-profile-section .profile-content {
-  text-align: center !important;
-}
-
-/* Center the attractions intro section */
-.attractions-intro .intro-content {
-  text-align: center !important;
-}
-
-/* Center the about content section */
-.about-content-section .about-text-full {
-  text-align: center !important;
-}
-
-/* Center the services content section */
-.services-content-section .service-item {
-  text-align: center !important;
-}
-
-/* Center the contact info section */
-.contact-info .info-card {
-  text-align: center !important;
-}
-
-/* Center the map section */
-.map-section .map-directions {
-  text-align: center !important;
-}
-
-/* Center the FAQ section */
-.faq-section .faq-container {
-  text-align: center !important;
-}
-
-.faq-question h3 {
-  text-align: left !important; /* Keep question text left-aligned for readability */
-}
-
-.faq-answer p {
-  text-align: justify !important; /* Keep answer text justified for readability */
-}
-
-/* Center the CTA section */
-.cta-section .container,
-.cta-section-new .container {
-  text-align: center !important;
-}
-
-/* Center the hero content */
-.hero-content {
-  text-align: center !important;
-}
-
-/* Center the banner content */
+/* Make sure all headings are centered */
+h1,
+h2,
+h3,
 .banner-content {
   text-align: center !important;
 }
 
-/* Center the destinations grid */
-.destinations-grid {
-  text-align: center !important;
+/* Add these fixes for the social icons in the contact page */
+.social-connect .social-icons a {
+  background-color: #0047ab !important; /* Primary blue background */
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  margin: 0 5px !important;
+}
+
+.social-connect .social-icons a i {
+  color: #ffffff !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+
+.social-connect .social-icons a:hover {
+  background-color: #ffa500 !important; /* Orange on hover */
+  transform: translateY(-5px) !important;
+}
+
+/* Fix for the destination card images to have consistent heights */
+.destination-image {
+  height: 250px !important; /* Fixed height */
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.destination-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* This ensures the image covers the area without distortion */
+  object-position: center !important;
+}
+
+/* Also fix the destination cards in the grid to have consistent heights */
+.destination-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
 }
 
 .destination-info {
-  text-align: center !important;
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 
-/* Center the services grid */
-.services-grid {
-  text-align: center !important;
+/* Fix for the attractions page images as well */
+.attraction-image {
+  height: 400px !important;
+  overflow: hidden !important;
 }
 
-/* Center the values grid */
-.values-grid {
-  text-align: center !important;
-}
-
-/* Center the info cards */
-.info-cards {
-  text-align: center !important;
-}
-
-/* Center the form container */
-.form-container {
-  text-align: center !important;
-}
-
-.form-group label {
-  text-align: left !important; /* Keep labels left-aligned for better form usability */
-}
-
-/* Center the social connect section */
-.social-connect {
-  text-align: center !important;
-}
-
-/* Center the map container */
-.map-container {
-  text-align: center !important;
-}
-
-/* Center the footer bottom */
-.footer-bottom {
-  text-align: center !important;
+.attraction-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
