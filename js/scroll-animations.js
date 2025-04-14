@@ -159,6 +159,36 @@ function addAnimationClasses() {
       section.style.transitionDelay = `${index * 0.1}s`
     })
   }
+
+  // Error page elements
+  const errorContent = document.querySelector(".error-content")
+  if (errorContent) {
+    errorContent.classList.add("animate")
+
+    const errorIcon = errorContent.querySelector(".error-icon")
+    if (errorIcon) errorIcon.classList.add("scale-in")
+
+    const errorHeading = errorContent.querySelector("h2")
+    if (errorHeading) errorHeading.classList.add("slide-up")
+
+    const errorParagraphs = errorContent.querySelectorAll("p")
+    errorParagraphs.forEach((p, index) => {
+      p.classList.add("slide-up")
+      p.classList.add(`delay-${(index + 1) * 100}`)
+    })
+
+    const errorContactInfo = errorContent.querySelector(".error-contact-info")
+    if (errorContactInfo) {
+      errorContactInfo.classList.add("slide-up")
+      errorContactInfo.classList.add("delay-300")
+    }
+
+    const errorActions = errorContent.querySelector(".error-actions")
+    if (errorActions) {
+      errorActions.classList.add("slide-up")
+      errorActions.classList.add("delay-400")
+    }
+  }
 }
 
 // Function to initialize animations
