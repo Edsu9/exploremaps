@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "my-v0-project",
   "version": "0.1.0",
@@ -6,3 +7,13 @@
     "build": "echo 'no build script'"
   }
 }
+=======
+{
+  "name": "my-v0-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'no build script'"
+  }
+}
+>>>>>>> f2e559ea65eeb33858ead0486337edae2497eaaa
