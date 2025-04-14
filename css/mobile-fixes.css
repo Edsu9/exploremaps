@@ -500,31 +500,46 @@ h3,
 /* Center the CTA section paragraphs */
 .cta-section-new p {
   text-align: center !important;
+  text-justify: none !important;
   margin-left: auto !important;
   margin-right: auto !important;
   max-width: 800px !important;
 }
 
-/* Target specific paragraphs to center them */
-p:contains("Contact us today to start planning your next adventure"),
-p:contains("Contact us for a customized itinerary tailored to your preferences"),
-p:contains("Let us help you plan the perfect Sorsogon adventure"),
-p:contains("Reach out today and let's create unforgettable memories together") {
-  text-align: center !important;
-}
-
-/* Special case for the paragraph that should be centered but not justified */
-p:contains("Let our team of experts guide you through the wonders of our province") {
-  text-align: center !important;
-  text-justify: none !important;
-  -moz-text-align-last: center !important;
-  text-align-last: center !important;
-}
-
-/* Alternative selectors for the CTA paragraphs in case the :contains selector isn't supported */
+/* Override the general justify rule for these specific sections */
 .cta-section-new p,
+.about-banner + .cta-section-new p,
+.services-banner + .cta-section-new p,
+.attractions-banner + .cta-section-new p,
+.contact-banner + .cta-section-new p,
+.company-banner + .cta-section-new p,
 .combined-banner-section + .cta-section-new p {
   text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  text-justify: none !important;
+}
+
+/* Add !important to override the general p rule */
+p {
+  text-align: justify;
+}
+
+/* Add a more specific rule to override the justify for CTA paragraphs */
+body .cta-section-new p {
+  text-align: center !important;
+  text-justify: none !important;
+}
+
+/* Add a media query specifically for mobile */
+@media screen and (max-width: 768px) {
+  .cta-section-new p {
+    text-align: center !important;
+    text-justify: none !important;
+  }
+
+  /* Override any other rules that might be causing justification */
+  p.cta-text,
+  .cta-section-new p {
+    text-align: center !important;
+    text-justify: none !important;
+  }
 }
