@@ -301,8 +301,7 @@
             
             if (menuToggle && navMenu) {
                 menuToggle.addEventListener("click", function() {
-                    console.log("Menu toggle clicked");
-                    navMenu.classList.toggle("active");
+                    navMenu.classList.toggle("menu-active");
                     
                     // Toggle icon between bars and X
                     const icon = this.querySelector("i");
