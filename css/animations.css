@@ -101,38 +101,20 @@
 
 /* Animation for hero section */
 .hero-content {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: heroFadeIn 1.2s forwards;
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes heroFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Animation for page banners */
+/* Animation for page banners - REMOVED ANIMATIONS */
 .banner-content {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: bannerFadeIn 1s forwards;
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes bannerFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.banner-content h1 {
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 /* Animation for CTA sections */

@@ -399,10 +399,11 @@ nav {
 .banner-content {
   position: relative;
   z-index: 2;
-  animation: fadeIn 1s ease-out;
   max-width: 800px;
   padding: 0 20px;
   width: 100%;
+  opacity: 1;
+  animation: none;
 }
 
 .banner-content h1 {
@@ -411,9 +412,10 @@ nav {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
   display: inline-block;
-  animation: slideInDown 1s ease-out;
+  animation: none;
   font-weight: 700;
   letter-spacing: 2px;
+  opacity: 1;
 }
 
 /* Specific banner styles with better images */
@@ -1106,6 +1108,18 @@ footer::before {
 
 .footer-bottom p:hover {
   opacity: 1;
+}
+
+/* Animation keyframes */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Animation keyframes */
@@ -2119,11 +2133,12 @@ footer::before {
 .combined-banner-section .banner-content {
   position: relative;
   z-index: 2;
-  animation: fadeIn 1s ease-out;
   max-width: 800px;
   padding: 0 20px;
   width: 100%;
   margin: 0;
+  opacity: 1;
+  animation: none;
 }
 
 .combined-banner-section .banner-content h1 {
@@ -2132,9 +2147,10 @@ footer::before {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
   display: inline-block;
-  animation: slideInDown 1s ease-out;
+  animation: none;
   font-weight: 700;
   letter-spacing: 2px;
+  opacity: 1;
 }
 
 .combined-banner-section .cta-content {

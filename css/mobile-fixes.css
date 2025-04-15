@@ -543,3 +543,33 @@ body .cta-section-new p {
     text-justify: none !important;
   }
 }
+
+/* Justify text in service descriptions */
+.service-item .service-text p {
+  text-align: justify !important;
+}
+
+/* Fix mobile menu toggle functionality */
+.menu-toggle {
+  z-index: 1100 !important; /* Higher z-index to ensure it's always clickable */
+  position: relative !important;
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block !important;
+    cursor: pointer !important;
+  }
+
+  /* Ensure menu toggle is always visible and clickable */
+  header .menu-toggle {
+    position: relative !important;
+    z-index: 1100 !important;
+  }
+}
+
+/* Ensure mobile menu stays above other content */
+.nav-menu.active {
+  z-index: 1050 !important;
+}

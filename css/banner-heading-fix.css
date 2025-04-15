@@ -1,0 +1,56 @@
+/* Fix for banner headings to prevent fading */
+
+/* Target all h1 elements in banner sections */
+.combined-banner-section h1,
+.page-banner h1,
+.banner-content h1 {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  display: block !important;
+}
+
+/* Ensure the banner content itself is also immediately visible */
+.banner-content,
+.combined-banner-section .banner-content {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Override any active class animations */
+.banner-content.active,
+.combined-banner-section .banner-content.active,
+.banner-content h1.active,
+.combined-banner-section h1.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Ensure text is visible during page load */
+.banner-content h1 {
+  animation: none !important;
+  -webkit-animation: none !important;
+}
+
+/* Override any keyframe animations */
+@keyframes bannerFadeIn {
+  0%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes bannerFadeIn {
+  0%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
