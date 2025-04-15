@@ -115,13 +115,21 @@
                     <!-- MODIFIED FORM: Changed to use direct form submission without JavaScript interference -->
                     <form id="contactForm" class="contact-form" method="POST" action="process-form.php" onsubmit="return true;">
                         <input type="hidden" name="form_source" value="contact_html_direct">
+                        
+                        <!-- Error message for email not found -->
+                        <div id="emailErrorMessage" class="form-group full-width" style="display: none; background-color: #ffebee; border-left: 4px solid #dc3545; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                            <p style="color: #dc3545; margin: 0; font-weight: 500;">
+                                <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>
+                                Email address not found. Please use <strong>edsiljeremias@gmail.com</strong> to submit the form.
+                            </p>
+                        </div>
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required placeholder="Enter your full name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                            <label for="email">Email Address <span style="color: #0047ab; font-size: 0.85rem;">(Use: edsiljeremias@gmail.com)</span></label>
+                            <input type="email" id="email" name="email" required placeholder="Enter edsiljeremias@gmail.com" value="edsiljeremias@gmail.com">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
@@ -362,4 +370,40 @@
             });
         });
         </script>
+
+<script>
+    // Check for URL parameters on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorParam = urlParams.get('error');
+        
+        // Handle email_not_found error
+        if (errorParam === 'email_not_found') {
+            const errorMessage = document.getElementById('emailErrorMessage');
+            const emailInput = document.getElementById('email');
+            
+            if (errorMessage && emailInput) {
+                // Show error message
+                errorMessage.style.display = 'block';
+                
+                // Highlight email field
+                emailInput.style.borderColor = '#dc3545';
+                emailInput.style.boxShadow = '0 0 0 2px rgba(220, 53, 69, 0.25)';
+                
+                // Set correct email
+                emailInput.value = 'edsiljeremias@gmail.com';
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Focus on email field
+                setTimeout(() => {
+                    emailInput.focus();
+                }, 800);
+            }
+        }
+    });
+</script>
     </body>
+</html>

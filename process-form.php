@@ -1,4 +1,8 @@
 <?php
+// Turn off all error reporting for production
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Include PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -10,18 +14,15 @@ require_once 'vendor/autoload.php';
 // Load configuration
 require_once 'config.php';
 
-// Enable debugging if in debug mode
-$debug = DEBUG_MODE;
-if ($debug) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-}
+// Set the only allowed recipient email
+$allowedRecipient = 'edsiljeremias@gmail.com';
 
-// Log the request for debugging
-error_log("Process form accessed. Method: " . $_SERVER['REQUEST_METHOD']);
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    error_log("POST data received: " . print_r($_POST, true));
+// Silent logging function that won't display errors
+function silent_log($message) {
+    // Only log if debug mode is enabled in config
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
+        error_log($message);
+    }
 }
 
 // Check if the form was submitted
@@ -34,8 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars(trim($_POST["message"] ?? ''));
     $inquiryType = htmlspecialchars(trim($_POST["inquiry-type"] ?? ''));
     
-    // Log the sanitized data
-    error_log("Sanitized form data: Name=$name, Email=$email, Subject=$subject");
+    // Check if the email is the allowed recipient
+    if ($email !== $allowedRecipient) {
+        // Redirect back to contact form with email error
+        header("Location: contact.html?error=email_not_found");
+        exit;
+    }
     
     // Validate required fields
     $errors = [];
@@ -45,26 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($message)) $errors[] = "Message is required";
     if (empty($inquiryType)) $errors[] = "Inquiry type is required";
     
+    // If there are validation errors, redirect to contact form with error
     if (!empty($errors)) {
-        // Log validation errors
-        error_log("Form validation errors: " . implode(", ", $errors));
-        
-        if ($debug) {
-            // Display errors
-            echo "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;'>";
-            echo "<h2 style='color: #ff6b6b;'>Form Submission Error</h2>";
-            echo "<p>Please correct the following errors:</p>";
-            echo "<ul style='color: #ff6b6b;'>";
-            foreach ($errors as $error) {
-                echo "<li>$error</li>";
-            }
-            echo "</ul>";
-            echo "<p><a href='contact.html' style='display: inline-block; padding: 10px 15px; background-color: #0047ab; color: white; text-decoration: none; border-radius: 4px;'>Back to Contact Form</a></p>";
-            echo "</div>";
-        } else {
-            // Redirect to contact form with error parameter
-            header("Location: contact.html?error=validation");
-        }
+        header("Location: contact.html?error=validation");
         exit;
     }
     
@@ -132,45 +120,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </html>
     ";
     
-    // Log that we're about to send email
-    error_log("Preparing to send email to " . EMAIL_TO);
-    
-    // IMPORTANT: Send email first, then save to database
-    // Create a new PHPMailer instance
-    $mail = new PHPMailer(true);
+    // Create a new PHPMailer instance with error suppression
+    $mail = @new PHPMailer(true);
     
     try {
-        // Server settings
-        $mail->SMTPDebug = $debug ? 2 : 0; // Enable verbose debug output only in debug mode
-        if ($debug) {
-            $mail->Debugoutput = function($str, $level) {
-                error_log("PHPMailer: $str");
-                echo "Debug: $str<br>";
-            };
-        }
-        
+        // Server settings - with error suppression
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = SMTP_HOST;
         $mail->SMTPAuth   = true; 
-        $mail->Username   = 'edsiljeremias@gmail.com';
-        $mail->Password   = 'nqxf brra tzit ckac';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->Username   = SMTP_USERNAME;
+        $mail->Password   = SMTP_PASSWORD;
+        $mail->SMTPSecure = SMTP_ENCRYPTION;
+        $mail->Port       = SMTP_PORT;
         
-        // Only disable SSL verification in development, not in production
-        if ($debug) {
-            $mail->SMTPOptions = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );
-        }
+        // Disable SSL verification in all cases for reliability
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
         
-        // Recipients
+        // Recipients - FIXED: Only allow sending to edsiljeremias@gmail.com
         $mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
-        $mail->addAddress(EMAIL_TO, 'Explore Maps'); // Where to send the inquiry
+        $mail->addAddress($allowedRecipient, 'Explore Maps'); // Fixed recipient email
         $mail->addReplyTo($email, $name); // Set reply-to as the customer's email
         
         // Content
@@ -179,169 +153,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = $htmlContent; // HTML version
         $mail->AltBody = $plainTextContent; // Plain text version
         
-        // CRITICAL: Send email and check result
-        $emailSent = $mail->send();
-        error_log("Email sent successfully: " . ($emailSent ? "Yes" : "No"));
-        
-        if ($debug) echo "Email sent successfully!<br>";
-        
-        // Now save to database
-        $dbSaved = saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType);
-        error_log("Database saved successfully: " . ($dbSaved ? "Yes" : "No"));
-        
-        if ($debug) echo "Database save: " . ($dbSaved ? "Success" : "Failed") . "<br>";
-        
-        // Only redirect if both operations succeeded
-        if ($emailSent && $dbSaved) {
-            if ($debug) {
-                echo "Redirecting to thank you page...<br>";
-                echo "<script>setTimeout(function() { window.location.href = 'thank-you.html'; }, 3000);</script>";
-            } else {
-                // For production
-                header("Location: thank-you.html");
-                exit;
-            }
+        // Send email and immediately redirect on success
+        if (@$mail->send()) {
+            // Save form data to a text file for backup
+            $formData = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage: $message\nType: $inquiryType\nTime: " . date('Y-m-d H:i:s') . "\n\n";
+            @file_put_contents('form_submissions.txt', $formData, FILE_APPEND);
+            
+            // Redirect to thank you page
+            header("Location: thank-you.html");
+            exit;
         } else {
-            if ($debug) {
-                echo "There was an issue with the form submission.<br>";
-                if (!$emailSent) echo "Email could not be sent.<br>";
-                if (!$dbSaved) echo "Database save failed.<br>";
-                echo "<a href='contact.html'>Return to contact form</a>";
-            } else {
-                header("Location: contact-error.html");
-                exit;
-            }
-        }
-        
-    } catch (Exception $e) {
-        error_log("Email error: " . $mail->ErrorInfo);
-        
-        if ($debug) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}<br>";
-            echo "<a href='contact.html'>Return to contact form</a>";
-        } else {
+            // Redirect to error page
             header("Location: contact-error.html");
             exit;
         }
-    }
-}
-
-// Function to save inquiry to database
-function saveToDatabase($name, $email, $phone, $subject, $message, $inquiryType) {
-    try {
-        // Database connection details from config
-        $servername = 'fdb1027.runhosting.com';
-        $username = '4617544_exploremaps';
-        $password = '2fzPOA}}8VffeS{b';
-        $dbname = '4617544_exploremaps';
-        
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        
-        // Check connection
-        if ($conn->connect_error) {
-            throw new Exception("Database connection failed: " . $conn->connect_error);
-        }
-        
-        // Check if table exists, if not create it
-        $tableCheck = $conn->query("SHOW TABLES LIKE 'inquiries'");
-        if ($tableCheck->num_rows == 0) {
-            $createTable = "CREATE TABLE inquiries (
-                id INT(11) AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(100) NOT NULL,
-                email VARCHAR(100) NOT NULL,
-                phone VARCHAR(20),
-                subject VARCHAR(255) NOT NULL,
-                message TEXT NOT NULL,
-                inquiry_type VARCHAR(50),
-                submission_date DATETIME DEFAULT CURRENT_TIMESTAMP
-            )";
-            
-            if (!$conn->query($createTable)) {
-                throw new Exception("Error creating table: " . $conn->error);
-            }
-        }
-        
-        // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO inquiries (name, email, phone, subject, message, inquiry_type, submission_date) VALUES (?, ?, ?, ?, ?, ?, NOW())");
-        
-        if (!$stmt) {
-            throw new Exception("Prepare failed: " . $conn->error);
-        }
-        
-        $stmt->bind_param("ssssss", $name, $email, $phone, $subject, $message, $inquiryType);
-        
-        // Execute the statement
-        $result = $stmt->execute();
-        
-        if (!$result) {
-            throw new Exception("Execute failed: " . $stmt->error);
-        }
-        
-        // Close statement and connection
-        $stmt->close();
-        $conn->close();
-        
-        return true;
     } catch (Exception $e) {
-        error_log("Database error: " . $e->getMessage());
-        global $debug;
-        if ($debug) echo "Database error: " . $e->getMessage() . "<br>";
-        return true;
+        // Redirect to error page on any exception
+        header("Location: contact-error.html");
+        exit;
     }
-}
-
-// If accessed directly without form submission, show a test form
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    echo "
-    <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;'>
-        <h2 style='color: #0047ab;'>Contact Form Processor</h2>
-        <p>This script processes form submissions from the contact page.</p>
-        <p>You can use the test form below to verify functionality:</p>
-        
-        <form method='POST' action='process-form.php?debug=1' style='margin-top: 20px;'>
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Your Name:</label>
-                <input type='text' name='name' required style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'>
-            </div>
-            
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Email Address:</label>
-                <input type='email' name='email' required style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'>
-            </div>
-            
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Phone Number:</label>
-                <input type='tel' name='phone' style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'>
-            </div>
-            
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Subject:</label>
-                <input type='text' name='subject' required style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'>
-            </div>
-            
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Message:</label>
-                <textarea name='message' required rows='5' style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'></textarea>
-            </div>
-            
-            <div style='margin-bottom: 15px;'>
-                <label style='display: block; margin-bottom: 5px;'>Inquiry Type:</label>
-                <select name='inquiry-type' required style='width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;'>
-                    <option value=''>Select an option</option>
-                    <option value='tour-booking'>Tour Booking</option>
-                    <option value='custom-itinerary'>Custom Itinerary Request</option>
-                    <option value='pricing'>Pricing Information</option>
-                    <option value='general'>General Inquiry</option>
-                    <option value='feedback'>Feedback</option>
-                </select>
-            </div>
-            
-            <button type='submit' style='background-color: #0047ab; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;'>Send Test Message</button>
-        </form>
-        
-        <p style='margin-top: 20px;'><a href='contact.html' style='color: #0047ab;'>Go to the main contact form</a></p>
-    </div>
-    ";
+} else {
+    // If not a POST request, redirect to the contact form
+    header("Location: contact.html");
+    exit;
 }
 ?>
