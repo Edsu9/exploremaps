@@ -13,12 +13,6 @@ define('EMAIL_FROM', 'edsiljeremias@gmail.com');
 define('EMAIL_FROM_NAME', 'Explore Maps Travel & Tours - Sorsogon');
 define('EMAIL_TO', 'edsiljeremias@gmail.com'); // Where to send inquiries
 
-// Database Configuration
-define('DB_HOST', 'fdb1027.runhosting.com'); // Often different on shared hosting
-define('DB_USERNAME', '4617544_exploremaps'); 
-define('DB_PASSWORD', '2fzPOA}}8VffeS{b');
-define('DB_NAME', '4617544_exploremaps');
-
 // Debug Mode (set to false in production)
 define('DEBUG_MODE', true);
 ?>
