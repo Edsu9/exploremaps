@@ -1,0 +1,794 @@
+/* Enhanced Accommodation Page Styles */
+
+/* General Page Styling */
+.accommodation-page {
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Banner Enhancement */
+  .combined-banner-section {
+    position: relative;
+    height: 500px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .combined-banner-section::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)) !important;
+  }
+  
+  .combined-banner-section .banner-content h1 {
+    font-size: 4.5rem !important;
+    letter-spacing: 3px !important;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* CTA Section Enhancement */
+  .cta-section-new {
+    background: linear-gradient(135deg, #0047ab, #1a75ff) !important;
+    padding: 50px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .cta-section-new h2 {
+    font-size: 2.8rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .cta-section-new p {
+    font-size: 1.3rem !important;
+    max-width: 800px !important;
+    margin: 0 auto 30px !important;
+  }
+  
+  .cta-section-new .btn {
+    background: #0047ab !important; /* Blue color */
+    background: linear-gradient(to right, #0047ab, #1a75ff) !important; /* Blue gradient */
+    border: none !important;
+    box-shadow: 0 10px 20px rgba(0, 71, 171, 0.3) !important;
+    transition: all 0.3s ease !important;
+    padding: 15px 40px !important;
+    font-size: 1.2rem !important;
+    border-radius: 50px !important;
+  }
+  
+  .cta-section-new .btn:hover {
+    background: #003d91 !important; /* Slightly darker blue on hover */
+    background: linear-gradient(to right, #003d91, #0066cc) !important; /* Darker blue gradient on hover */
+    box-shadow: 0 15px 30px rgba(0, 71, 171, 0.4) !important;
+    transform: translateY(-5px) !important;
+  }
+  
+  /* Introduction Section */
+  .accommodation-intro {
+    padding: 80px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .accommodation-intro .section-header h2 {
+    font-size: 3rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .accommodation-intro .section-header p {
+    font-size: 1.3rem !important;
+    color: #555 !important;
+  }
+  
+  .intro-content {
+    max-width: 900px !important;
+    margin: 40px auto 0 !important;
+    line-height: 1.8 !important;
+    font-size: 1.15rem !important;
+  }
+  
+  .intro-content p {
+    margin-bottom: 25px !important;
+    color: #444 !important;
+  }
+  
+  /* Accommodation Types Section */
+  .accommodation-types {
+    padding: 80px 0 !important;
+    background: linear-gradient(135deg, #f0f8ff, #f5f5f5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .accommodation-types::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230047ab' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  
+  .accommodation-types .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .types-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important; /* Reduced gap for better fit */
+    margin-top: 40px !important;
+  }
+  
+  .type-card {
+    display: flex !important;
+    background-color: white !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.4s ease !important;
+    position: relative !important;
+    height: auto !important; /* Changed from fixed height to auto */
+    min-height: 300px !important; /* Added minimum height */
+  }
+  
+  .type-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 30px 60px rgba(0, 71, 171, 0.2) !important;
+  }
+  
+  .type-card:nth-child(even) {
+    flex-direction: row-reverse !important;
+  }
+  
+  .type-image {
+    flex: 1 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 300px !important; /* Ensure minimum height for image container */
+  }
+  
+  .type-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.8s ease !important;
+  }
+  
+  .type-card:hover .type-image img {
+    transform: scale(1.1) !important;
+  }
+  
+  .type-content {
+    flex: 1 !important;
+    padding: 30px !important; /* Reduced padding for better fit */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa) !important;
+  }
+  
+  .type-card:nth-child(even) .type-content {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff) !important;
+  }
+  
+  .type-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #0047ab, #1e90ff);
+    z-index: 1;
+  }
+  
+  .type-card:nth-child(even) .type-content::before {
+    left: auto;
+    right: 0;
+  }
+  
+  .type-content h3 {
+    font-size: 2rem !important; /* Slightly reduced font size */
+    color: #0047ab !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+    padding-bottom: 15px !important;
+  }
+  
+  .type-content h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #ffa500, #ff8c00);
+  }
+  
+  .type-content p {
+    margin-bottom: 20px !important;
+    line-height: 1.6 !important;
+    color: #555 !important;
+    font-size: 1rem !important; /* Slightly reduced font size */
+  }
+  
+  .features-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin-top: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important; /* Reduced gap */
+  }
+  
+  .features-list li {
+    display: flex !important;
+    align-items: center !important;
+    font-weight: 500 !important;
+    color: #444 !important;
+    font-size: 0.95rem !important; /* Slightly reduced font size */
+  }
+  
+  .features-list li i {
+    color: #ffa500 !important;
+    margin-right: 8px !important;
+    font-size: 1rem !important;
+    width: 20px !important;
+    text-align: center !important;
+  }
+  
+  /* Featured Accommodations Section */
+  .featured-accommodations {
+    padding: 80px 0 !important;
+    background-color: #fff !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .featured-accommodations::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 71, 171, 0.03) 0%, rgba(255, 165, 0, 0.03) 100%);
+    z-index: 0;
+  }
+  
+  .featured-accommodations .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .accommodations-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    margin-top: 40px !important;
+  }
+  
+  .accommodation-card {
+    background-color: white !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.4s ease !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+  }
+  
+  .accommodation-card:hover {
+    transform: translateY(-15px) !important;
+    box-shadow: 0 30px 60px rgba(0, 71, 171, 0.15) !important;
+  }
+  
+  .accommodation-image {
+    height: 250px !important; /* Reduced height */
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .accommodation-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.8s ease !important;
+  }
+  
+  .accommodation-card:hover .accommodation-image img {
+    transform: scale(1.1) !important;
+  }
+  
+  .price-tag {
+    position: absolute !important;
+    top: 20px !important;
+    left: 0 !important;
+    background: linear-gradient(to right, #0047ab, #1e90ff) !important;
+    color: white !important;
+    padding: 8px 15px 8px 20px !important; /* Reduced padding */
+    border-radius: 0 50px 50px 0 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important; /* Reduced font size */
+    box-shadow: 0 5px 15px rgba(0, 71, 171, 0.3) !important;
+    z-index: 2 !important;
+  }
+  
+  .accommodation-details {
+    padding: 20px !important; /* Reduced padding */
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    background: white !important;
+    position: relative !important;
+  }
+  
+  .accommodation-details h3 {
+    font-size: 1.8rem !important; /* Reduced font size */
+    color: #0047ab !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+  }
+  
+  .rating {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .rating i {
+    color: #ffc107 !important;
+    margin-right: 3px !important;
+    font-size: 1.1rem !important;
+  }
+  
+  .rating span {
+    margin-left: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: #555 !important;
+  }
+  
+  .location {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 15px !important;
+    color: #666 !important;
+    font-size: 1rem !important;
+  }
+  
+  .location i {
+    color: #ffa500 !important;
+    margin-right: 10px !important;
+  }
+  
+  .accommodation-details p {
+    margin-bottom: 15px !important;
+    line-height: 1.6 !important;
+    color: #555 !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+  }
+  
+  .amenities {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important; /* Reduced gap */
+    margin-bottom: 20px !important;
+    margin-top: auto !important;
+    justify-content: center !important;
+  }
+  
+  .amenities span {
+    background-color: #f0f5ff !important;
+    padding: 6px 12px !important; /* Reduced padding */
+    border-radius: 50px !important;
+    font-size: 0.85rem !important; /* Reduced font size */
+    display: flex !important;
+    align-items: center !important;
+    color: #0047ab !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .amenities span:hover {
+    background-color: #0047ab !important;
+    color: white !important;
+    transform: translateY(-3px) !important;
+  }
+  
+  .amenities span i {
+    margin-right: 6px !important;
+  }
+  
+  .accommodation-details .btn {
+    background: #0047ab !important;
+    background: linear-gradient(to right, #0047ab, #1a75ff) !important;
+    border: none !important;
+    box-shadow: 0 10px 20px rgba(0, 71, 171, 0.2) !important;
+    align-self: center !important;
+    margin-top: auto !important;
+    padding: 10px 20px !important; /* Reduced padding */
+    font-size: 1rem !important;
+    width: 80% !important;
+    text-align: center !important;
+    transition: all 0.4s ease !important;
+    border-radius: 50px !important;
+  }
+  
+  .accommodation-details .btn:hover {
+    background: #003d91 !important;
+    background: linear-gradient(to right, #003d91, #0066cc) !important;
+    box-shadow: 0 15px 30px rgba(0, 71, 171, 0.3) !important;
+    transform: translateY(-5px) !important;
+  }
+  
+  /* Booking Process Section */
+  .booking-process {
+    padding: 80px 0 !important;
+    background: linear-gradient(135deg, #f0f5ff 0%, #fff8e1 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .process-steps {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important; /* Reduced gap */
+    margin-top: 40px !important;
+    position: relative !important;
+  }
+  
+  /* Add connecting lines between steps */
+  .process-steps::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 15%;
+    width: 70%;
+    height: 4px;
+    background: linear-gradient(to right, #0047ab, #ffa500);
+    z-index: 0;
+  }
+  
+  .step {
+    background-color: white !important;
+    padding: 25px 20px !important; /* Reduced padding */
+    border-radius: 20px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    text-align: center !important;
+    transition: all 0.4s ease !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  .step:hover {
+    transform: translateY(-15px) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .step-icon {
+    font-size: 2.5rem !important; /* Reduced font size */
+    color: #0047ab !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+    display: inline-block !important;
+    transition: all 0.4s ease !important;
+    background-color: #f0f5ff !important;
+    width: 80px !important; /* Reduced size */
+    height: 80px !important; /* Reduced size */
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 20px !important;
+    box-shadow: 0 10px 20px rgba(0, 71, 171, 0.1) !important;
+  }
+  
+  .step:hover .step-icon {
+    transform: scale(1.1) rotate(10deg) !important;
+    background-color: #0047ab !important;
+    color: white !important;
+  }
+  
+  .step-number {
+    position: absolute !important;
+    top: -10px !important;
+    right: -10px !important;
+    background: linear-gradient(to right, #ffa500, #ff8c00) !important;
+    color: white !important;
+    width: 30px !important; /* Reduced size */
+    height: 30px !important; /* Reduced size */
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important; /* Reduced font size */
+    font-weight: 700 !important;
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3) !important;
+  }
+  
+  .step h3 {
+    font-size: 1.5rem !important; /* Reduced font size */
+    color: #0047ab !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .step p {
+    line-height: 1.6 !important;
+    color: #555 !important;
+    font-size: 0.95rem !important; /* Reduced font size */
+  }
+  
+  .booking-cta {
+    text-align: center !important;
+    margin-top: 60px !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  .booking-cta .btn {
+    padding: 12px 40px !important; /* Reduced padding */
+    font-size: 1.1rem !important;
+    background: #0047ab !important;
+    background: linear-gradient(to right, #0047ab, #1a75ff) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    box-shadow: 0 15px 30px rgba(0, 71, 171, 0.2) !important;
+    transition: all 0.4s ease !important;
+  }
+  
+  .booking-cta .btn:hover {
+    background: #003d91 !important;
+    background: linear-gradient(to right, #003d91, #0066cc) !important;
+    box-shadow: 0 20px 40px rgba(0, 71, 171, 0.3) !important;
+    transform: translateY(-8px) !important;
+  }
+  
+  /* FAQ Section Enhancements */
+  .faq-section {
+    padding: 80px 0 !important;
+    background-color: white !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .faq-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 71, 171, 0.02) 0%, rgba(255, 165, 0, 0.02) 100%);
+    z-index: 0;
+  }
+  
+  .faq-section .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .faq-container {
+    max-width: 900px !important;
+    margin: 40px auto 0 !important;
+  }
+  
+  .faq-item {
+    margin-bottom: 20px !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    background-color: white !important;
+  }
+  
+  .faq-item:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+  }
+  
+  .faq-question {
+    padding: 20px 25px !important; /* Reduced padding */
+    background: linear-gradient(to right, #f8f9fa, #ffffff) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-left: 5px solid #0047ab !important;
+  }
+  
+  .faq-question h3 {
+    font-size: 1.2rem !important; /* Reduced font size */
+    color: #0047ab !important;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+  }
+  
+  .toggle-icon {
+    color: #0047ab !important;
+    width: 30px !important; /* Reduced size */
+    height: 30px !important; /* Reduced size */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background-color: rgba(0, 71, 171, 0.1) !important;
+    transition: all 0.3s ease !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+  }
+  
+  .toggle-icon:hover {
+    background-color: #0047ab !important;
+    color: white !important;
+  }
+  
+  .faq-answer {
+    padding: 0 25px 20px !important; /* Reduced padding */
+    background-color: white !important;
+    display: block; /* Make answers visible by default */
+  }
+  
+  .faq-answer p {
+    line-height: 1.6 !important;
+    color: #555 !important;
+    font-size: 1rem !important;
+    margin-bottom: 0 !important;
+    padding: 15px 0 0 !important;
+  }
+  
+  @keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 1200px) {
+    .accommodations-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  
+    .process-steps::before {
+      display: none !important;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .combined-banner-section {
+      height: 400px !important;
+    }
+  
+    .combined-banner-section .banner-content h1 {
+      font-size: 3.5rem !important;
+    }
+  
+    .type-card {
+      flex-direction: column !important;
+      height: auto !important;
+    }
+  
+    .type-card:nth-child(even) {
+      flex-direction: column !important;
+    }
+  
+    .type-image {
+      height: 250px !important;
+    }
+  
+    .type-content {
+      padding: 25px !important;
+    }
+  
+    .type-content::before {
+      width: 100% !important;
+      height: 5px !important;
+      top: 0 !important;
+      left: 0 !important;
+    }
+  
+    .process-steps {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  
+    .features-list {
+      grid-template-columns: 1fr !important; /* Change to single column on smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .combined-banner-section {
+      height: 350px !important;
+    }
+  
+    .combined-banner-section .banner-content h1 {
+      font-size: 3rem !important;
+    }
+  
+    .cta-section-new h2 {
+      font-size: 2rem !important;
+    }
+  
+    .accommodations-grid {
+      grid-template-columns: 1fr !important;
+    }
+  
+    .accommodation-image {
+      height: 220px !important;
+    }
+  
+    .process-steps {
+      grid-template-columns: 1fr !important;
+    }
+  
+    .section-header h2 {
+      font-size: 2.2rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .combined-banner-section {
+      height: 300px !important;
+    }
+  
+    .combined-banner-section .banner-content h1 {
+      font-size: 2.2rem !important;
+    }
+  
+    .cta-section-new h2 {
+      font-size: 1.8rem !important;
+    }
+  
+    .cta-section-new p {
+      font-size: 1rem !important;
+    }
+  
+    .type-content h3 {
+      font-size: 1.6rem !important;
+    }
+  
+    .accommodation-details h3 {
+      font-size: 1.4rem !important;
+    }
+  
+    .step-icon {
+      width: 70px !important;
+      height: 70px !important;
+      font-size: 2.2rem !important;
+    }
+  
+    .section-header h2 {
+      font-size: 1.8rem !important;
+    }
+  
+    .faq-question h3 {
+      font-size: 1.1rem !important;
+      padding-right: 40px !important; /* Make room for the toggle icon */
+    }
+  }
+  

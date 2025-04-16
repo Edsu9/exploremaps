@@ -1,4 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Add loaded class to body immediately to trigger animations
+  document.body.classList.add("loaded")
+
+  // Force animation of key elements
+  setTimeout(() => {
+    document.querySelectorAll(".banner-content, .hero-content").forEach((element) => {
+      element.style.opacity = "1"
+      element.style.transform = "translateY(0)"
+
+      const heading = element.querySelector("h1")
+      if (heading) {
+        heading.style.opacity = "1"
+        heading.style.transform = "translateY(0)"
+      }
+    })
+
+    document
+      .querySelectorAll(".animate, .fade-in, .slide-up, .slide-left, .slide-right, .scale-in")
+      .forEach((element) => {
+        element.style.opacity = "1"
+        element.style.transform = "translateY(0)"
+      })
+  }, 100)
+
   // Create scroll indicator
   const scrollIndicator = document.createElement("div")
   scrollIndicator.className = "scroll-indicator"
@@ -341,11 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //   })
   // }
 
-  // Run on page load
-  // animateOnScroll()
+  // // Run on page load
+  // // animateOnScroll()
 
-  // Run on scroll
-  // window.addEventListener("scroll", animateOnScroll)
+  // // Run on scroll
+  // // window.addEventListener("scroll", animateOnScroll)
 
   // Header Scroll Effect
   const header = document.querySelector("header")

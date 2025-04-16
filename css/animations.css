@@ -1,6 +1,30 @@
+/* Add this new section at the top of the file to ensure animations work on page load */
+body.loaded .animate,
+body.loaded .fade-in,
+body.loaded .slide-up,
+body.loaded .slide-left,
+body.loaded .slide-right,
+body.loaded .scale-in,
+body.loaded .stagger-item,
+body.loaded .banner-content,
+body.loaded .hero-content {
+  animation: fadeInOnLoad 1s forwards;
+}
+
+@keyframes fadeInOnLoad {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Animations for Explore Maps website */
 
-/* Base animation classes */
+/* Base animation classes - UPDATED to ensure visibility */
 .animate {
   opacity: 0;
   transform: translateY(30px);
@@ -99,22 +123,42 @@
   transition-delay: 0.5s;
 }
 
-/* Animation for hero section */
+/* Update hero content animations */
 .hero-content {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: fadeInOnLoad 1s forwards; /* Added animation */
 }
 
-/* Animation for page banners - REMOVED ANIMATIONS */
-.banner-content {
+.hero-content.active {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
+}
+
+/* Update banner content animations to ensure they're visible */
+.banner-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: fadeInOnLoad 1s forwards; /* Added animation */
+}
+
+.banner-content.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .banner-content h1 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: fadeInOnLoad 1.2s forwards; /* Added animation */
+}
+
+.banner-content.active h1 {
   opacity: 1;
-  transform: none;
-  animation: none;
+  transform: translateY(0);
 }
 
 /* Animation for CTA sections */
@@ -196,4 +240,34 @@ footer::after {
 
 footer.active::after {
   transform: scaleX(1);
+}
+
+/* Animation for accommodation types */
+.type-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.type-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Animation for accommodation cards */
+.accommodation-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accommodation-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Animation for booking process steps */
+.step {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }

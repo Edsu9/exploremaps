@@ -12,9 +12,34 @@ document.addEventListener("DOMContentLoaded", () => {
     animateOnScroll()
   })
 
-  // Run initial animations
+  // Run initial animations immediately when page loads - IMPORTANT!
   setTimeout(() => {
-    animateOnScroll()
+    console.log("Triggering initial animations")
+    document
+      .querySelectorAll(".animate, .fade-in, .slide-up, .slide-left, .slide-right, .scale-in")
+      .forEach((element) => {
+        element.classList.add("active")
+      })
+
+    document.querySelectorAll(".stagger-container").forEach((container) => {
+      const items = container.querySelectorAll(".stagger-item")
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("active")
+        }, 100 * index)
+      })
+    })
+
+    document.querySelectorAll(".cta-section, .cta-section-new, footer").forEach((element) => {
+      element.classList.add("active")
+    })
+
+    // Ensure banner content is visible
+    document.querySelectorAll(".banner-content, .hero-content").forEach((content) => {
+      content.classList.add("active")
+      const heading = content.querySelector("h1")
+      if (heading) heading.classList.add("active")
+    })
   }, 100)
 })
 
@@ -160,6 +185,34 @@ function addAnimationClasses() {
     })
   }
 
+  // Accommodation types
+  const typesGrid = document.querySelector(".types-grid")
+  if (typesGrid) {
+    typesGrid.querySelectorAll(".type-card").forEach((card, index) => {
+      card.classList.add(index % 2 === 0 ? "slide-right" : "slide-left")
+    })
+  }
+
+  // Accommodation cards
+  const accommodationsGrid = document.querySelector(".accommodations-grid")
+  if (accommodationsGrid) {
+    accommodationsGrid.classList.add("stagger-container")
+    accommodationsGrid.querySelectorAll(".accommodation-card").forEach((card, index) => {
+      card.classList.add("stagger-item")
+      card.classList.add(`delay-${((index % 5) + 1) * 100}`)
+    })
+  }
+
+  // Booking process steps
+  const processSteps = document.querySelector(".process-steps")
+  if (processSteps) {
+    processSteps.classList.add("stagger-container")
+    processSteps.querySelectorAll(".step").forEach((step, index) => {
+      step.classList.add("stagger-item")
+      step.classList.add(`delay-${((index % 5) + 1) * 100}`)
+    })
+  }
+
   // Error page elements
   const errorContent = document.querySelector(".error-content")
   if (errorContent) {
@@ -193,17 +246,29 @@ function addAnimationClasses() {
 
 // Function to initialize animations
 function initializeAnimations() {
-  // Animate hero content immediately
-  const heroContent = document.querySelector(".hero-content")
-  if (heroContent) {
-    heroContent.classList.add("active")
-  }
+  // Immediately activate all animations without waiting for scroll
+  document.querySelectorAll(".hero-content, .banner-content").forEach((content) => {
+    content.classList.add("active")
+    const heading = content.querySelector("h1")
+    if (heading) heading.classList.add("active")
+  })
 
-  // Animate banner content immediately
-  const bannerContent = document.querySelector(".banner-content")
-  if (bannerContent) {
-    bannerContent.classList.add("active")
-  }
+  // Immediately activate all other elements
+  document
+    .querySelectorAll(".animate, .fade-in, .slide-up, .slide-left, .slide-right, .scale-in")
+    .forEach((element) => {
+      element.classList.add("active")
+    })
+
+  // Activate staggered elements with delay
+  document.querySelectorAll(".stagger-container").forEach((container) => {
+    const items = container.querySelectorAll(".stagger-item")
+    items.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add("active")
+      }, 100 * index)
+    })
+  })
 }
 
 // Function to animate elements on scroll
