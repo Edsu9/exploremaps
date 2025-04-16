@@ -1,3 +1,68 @@
+/* Add this at the top of the file to ensure these animations take precedence */
+
+/* Special animations for headings */
+.banner-content h1,
+.hero-content h1,
+.page-banner h1,
+.combined-banner-section h1,
+.error-content h1,
+.thank-you-content h1 {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: headingEntrance 1.2s forwards ease-out;
+  animation-delay: 0.3s;
+}
+
+.hero-content p {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: headingEntrance 1.2s forwards ease-out;
+  animation-delay: 0.6s;
+}
+
+/* Define the entrance animation */
+@keyframes headingEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Alternative slide-in animation for some headings */
+.section-header h2 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sectionHeadingEntrance 1s forwards ease-out;
+  animation-delay: 0.2s;
+}
+
+@keyframes sectionHeadingEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Make sure animations play even if JavaScript fails */
+body.loaded .banner-content h1,
+body.loaded .hero-content h1,
+body.loaded .page-banner h1,
+body.loaded .combined-banner-section h1,
+body.loaded .error-content h1,
+body.loaded .thank-you-content h1,
+body.loaded .hero-content p,
+body.loaded .section-header h2 {
+  animation-play-state: running !important;
+}
+
 /* Add this new section at the top of the file to ensure animations work on page load */
 body.loaded .animate,
 body.loaded .fade-in,

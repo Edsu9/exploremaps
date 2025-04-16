@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animateOnScroll()
   })
 
+  // NEW CODE: Animate headings immediately
+  animateHeadings()
+
   // Run initial animations immediately when page loads - IMPORTANT!
   setTimeout(() => {
     console.log("Triggering initial animations")
@@ -42,6 +45,36 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }, 100)
 })
+
+// NEW FUNCTION: Add this function after the document.addEventListener block
+function animateHeadings() {
+  // Target all the specific headings mentioned
+  const headings = document.querySelectorAll(`
+    .banner-content h1, 
+    .hero-content h1,
+    .page-banner h1,
+    .combined-banner-section h1,
+    .error-content h1,
+    .thank-you-content h1,
+    .hero-content p,
+    .section-header h2
+  `)
+
+  // Apply animation classes
+  headings.forEach((heading) => {
+    // Force reflow to restart animation
+    void heading.offsetWidth
+
+    // Add active class to trigger animation
+    heading.classList.add("active")
+
+    // Also apply inline styles as a fallback
+    setTimeout(() => {
+      heading.style.opacity = "1"
+      heading.style.transform = "translateY(0)"
+    }, 100)
+  })
+}
 
 // Function to add animation classes to elements
 function addAnimationClasses() {

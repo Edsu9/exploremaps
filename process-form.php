@@ -14,8 +14,19 @@ require_once 'vendor/autoload.php';
 // Load configuration
 require_once 'config.php';
 
-// Set the only allowed recipient email
-$allowedRecipient = 'edsiljeremias@gmail.com';
+// Database connection function
+function connectToDatabase() {
+    try {
+        $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch(PDOException $e) {
+        // Log error but don't display to user
+        error_log("Database connection failed: " . $e->getMessage());
+        return null;
+    }
+}
 
 // Silent logging function that won't display errors
 function silent_log($message) {
@@ -35,13 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars(trim($_POST["message"] ?? ''));
     $inquiryType = htmlspecialchars(trim($_POST["inquiry-type"] ?? ''));
     
-    // Check if the email is the allowed recipient
-    if ($email !== $allowedRecipient) {
-        // Redirect back to contact form with email error
-        header("Location: contact.html?error=email_not_found");
-        exit;
-    }
-    
     // Validate required fields
     $errors = [];
     if (empty($name)) $errors[] = "Name is required";
@@ -54,6 +58,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors)) {
         header("Location: contact.html?error=validation");
         exit;
+    }
+    
+    // Save to database if connection is available
+    $dbConn = connectToDatabase();
+    if ($dbConn) {
+        try {
+            // Prepare SQL statement
+            $stmt = $dbConn->prepare("INSERT INTO inquiries (name, email, phone, subject, message, inquiry_type, submission_date, ip_address) 
+                                     VALUES (:name, :email, :phone, :subject, :message, :inquiry_type, NOW(), :ip_address)");
+            
+            // Bind parameters
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':subject', $subject);
+            $stmt->bindParam(':message', $message);
+            $stmt->bindParam(':inquiry_type', $inquiryType);
+            $stmt->bindParam(':ip_address', $_SERVER['REMOTE_ADDR']);
+            
+            // Execute the statement
+            $stmt->execute();
+            
+            // Log success
+            silent_log("Inquiry saved to database successfully. ID: " . $dbConn->lastInsertId());
+        } catch(PDOException $e) {
+            // Log error but continue with email sending
+            silent_log("Database error: " . $e->getMessage());
+        }
     }
     
     // Create email content - Plain text version
@@ -70,6 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $plainTextContent .= "===========================================\n";
     $plainTextContent .= "This inquiry was submitted on " . date('F j, Y \a\t g:i a') . "\n";
     $plainTextContent .= "From IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
+    
+    // Get a human-readable inquiry type label
+    $inquiryTypeLabel = getInquiryTypeLabel($inquiryType);
     
     // Create email content - HTML version
     $htmlContent = "
@@ -98,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class='field'><span class='label'>Name:</span> $name</div>
                     <div class='field'><span class='label'>Email:</span> <a href='mailto:$email'>$email</a></div>
                     <div class='field'><span class='label'>Phone:</span> " . (!empty($phone) ? $phone : "<em>Not provided</em>") . "</div>
-                    <div class='field'><span class='label'>Inquiry Type:</span> $inquiryType</div>
+                    <div class='field'><span class='label'>Inquiry Type:</span> $inquiryTypeLabel</div>
                 </div>
                 
                 <div class='section'>
@@ -142,14 +177,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             )
         );
         
-        // Recipients - FIXED: Only allow sending to edsiljeremias@gmail.com
+        // Recipients
         $mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
-        $mail->addAddress($allowedRecipient, 'Explore Maps'); // Fixed recipient email
+        $mail->addAddress(EMAIL_TO); // Your email address defined in config.php
         $mail->addReplyTo($email, $name); // Set reply-to as the customer's email
         
         // Content
         $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = "New Inquiry: $subject";
+        $mail->Subject = "New Inquiry: $subject ($inquiryTypeLabel)";
         $mail->Body    = $htmlContent; // HTML version
         $mail->AltBody = $plainTextContent; // Plain text version
         
@@ -176,5 +211,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If not a POST request, redirect to the contact form
     header("Location: contact.html");
     exit;
+}
+
+// Function to get a human-readable label for inquiry types
+function getInquiryTypeLabel($inquiryType) {
+    $labels = [
+        'flight-bookings' => 'Flight Bookings',
+        'accommodation' => 'Accommodation (Airbnb & Hotel)',
+        'custom-itinerary' => 'Custom Itinerary Requests',
+        'tour-packages' => 'Tour Packages',
+        'visa-processing' => 'Visa Processing',
+        'travel-insurance' => 'Travel Insurance',
+        'pricing' => 'Pricing Information',
+        'general' => 'General Inquiry',
+        'feedback' => 'Feedback',
+        'tour-booking' => 'Tour Booking' // For backward compatibility
+    ];
+    
+    return isset($labels[$inquiryType]) ? $labels[$inquiryType] : $inquiryType;
 }
 ?>

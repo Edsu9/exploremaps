@@ -5,13 +5,19 @@
 
 // Email Configuration
 define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_USERNAME', 'edsiljeremias@gmail.com'); // Replace with your email
-define('SMTP_PASSWORD', 'nqxf brra tzit ckac'); // Replace with your app password
+define('SMTP_USERNAME', 'edsiljeremias@gmail.com'); // Your email for sending
+define('SMTP_PASSWORD', 'nqxf brra tzit ckac'); // Your app password
 define('SMTP_PORT', 587);
 define('SMTP_ENCRYPTION', 'tls');
-define('EMAIL_FROM', 'edsiljeremias@gmail.com');
+define('EMAIL_FROM', 'edsiljeremias@gmail.com'); // From address
 define('EMAIL_FROM_NAME', 'Explore Maps Travel & Tours - Sorsogon');
-define('EMAIL_TO', 'edsiljeremias@gmail.com'); // Where to send inquiries
+define('EMAIL_TO', 'edsiljeremias@gmail.com'); // Where to send inquiries (your email)
+
+// Database Configuration
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'explore_maps');
+define('DB_USER', 'root'); // Replace with your database username
+define('DB_PASSWORD', ''); // Replace with your database password
 
 // Debug Mode (set to false in production)
 define('DEBUG_MODE', true);
