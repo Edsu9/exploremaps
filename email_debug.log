@@ -1,0 +1,22 @@
+[2025-04-17 08:29:31] Form processing started
+[2025-04-17 08:29:31] Configuration loaded
+[2025-04-17 08:29:31] Form submitted via POST
+[2025-04-17 08:29:31] Form data received - Name: nana, Email: ahah@gmail.com, Subject: hahah
+[2025-04-17 08:29:31] Form validation passed
+[2025-04-17 08:29:31] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'explore_maps'
+[2025-04-17 08:29:31] Setting up PHPMailer
+[2025-04-17 08:29:31] SMTP settings configured
+[2025-04-17 08:29:31] Email recipients configured
+[2025-04-17 08:29:31] Email content prepared, attempting to send
+[2025-04-17 08:29:41] Email sent successfully
+[2025-04-17 08:35:09] Form processing started
+[2025-04-17 08:35:09] Configuration loaded
+[2025-04-17 08:35:09] Form submitted via POST
+[2025-04-17 08:35:09] Form data received - Name: Edsil Derpo Grefalda, Email: pogiderpo@gmail.com, Subject: jdhdhd
+[2025-04-17 08:35:09] Form validation passed
+[2025-04-17 08:35:09] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'explore_maps'
+[2025-04-17 08:35:09] Setting up PHPMailer
+[2025-04-17 08:35:09] SMTP settings configured
+[2025-04-17 08:35:09] Email recipients configured
+[2025-04-17 08:35:09] Email content prepared, attempting to send
+[2025-04-17 08:35:15] Email sent successfully

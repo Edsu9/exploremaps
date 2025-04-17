@@ -1,136 +1,16 @@
-Name: Edsil Grefalda Derpo
-Email: edsiljeremias@gmail.com
-Phone: 09154089898
-Subject: fasga
-Message: haha
-Type: tour-booking
-Time: 2025-04-15 09:46:39
-
-Name: Edsil Derpo Grefalda
-Email: pogiderpo@gmail.com
-Phone: 09125518690
-Subject: aa
-Message: hahahiasl fclamcslskxcyjjkdxvjyd
-Type: custom-itinerary
-Time: 2025-04-15 10:04:18
-
-Name: hahaha
-Email: edsiljeremias@gmail.com
-Phone: hahah
+Name: nana
+Email: ahah@gmail.com
+Phone: haha
 Subject: hahah
-Message: jash
-Type: custom-itinerary
-Time: 2025-04-15 10:08:02
-
-Name: Mark Antonio Reyes
-Email: mark.reyes@gmail.com
-Phone: 09171234567
-Subject: hahah
-Message: qhshsh
-Type: custom-itinerary
-Time: 2025-04-15 10:13:25
-
-Name: Edsil Derpo Grefalda
-Email: edsiljeremias@gmail.com
-Phone: 09125518690
-Subject: aa
-Message: ediwowkaman
-Type: tour-booking
-Time: 2025-04-15 10:13:59
-
-Name: Edsil Derpo Grefalda
-Email: edsiljeremias@gmail.com
-Phone: 09125518690
-Subject: aa
-Message: hahah
-Type: custom-itinerary
-Time: 2025-04-15 10:15:14
-
-Name: Jen Habal
-Email: pogiderpo@gmail.com
-Phone: 09123456789
-Subject: Beach
-Message: hahah
-Type: custom-itinerary
-Time: 2025-04-15 10:22:44
-
-Name: Edsu Derpo
-Email: edsiljeremias@gmail.com
-Phone: 09123456789
-Subject: HAHAHA
-Message: HAHAHA
-Type: tour-booking
-Time: 2025-04-15 10:25:04
-
-Name: edsil ako
-Email: edsiljeremias@gmail.com
-Phone: 0912345678
-Subject: hahah
-Message: hahah
-Type: accommodation
-Time: 2025-04-16 08:00:16
-
-Name: Edwin Derpo
-Email: pogiderpo@gmail.com
-Phone: 09123456789
-Subject: HAHAH
-Message: AHAH
-Type: custom-itinerary
-Time: 2025-04-16 11:14:05
-
-Name: Edsil Hadap
-Email: edsiljeremias@gmail.com
-Phone: 092345678
-Subject: hdhdh
-Message: jhah
-Type: flight-bookings
-Time: 2025-04-17 04:04:00
-
-Name: NENE
-Email: edsiljeremias@gmail.com
-Phone: 0912345678
-Subject: hahah
-Message: haha
-Type: custom-itinerary
-Time: 2025-04-17 04:20:00
-
-Name: edsi jere
-Email: edsiljeremias@gmail.com
-Phone: jaha
-Subject: hahah
-Message: haha
-Type: pricing
-Time: 2025-04-17 04:28:41
+Message: s
+Type: feedback
+Time: 2025-04-17 08:29:41
 
 Name: Edsil Derpo Grefalda
 Email: pogiderpo@gmail.com
 Phone: 09125518690
 Subject: jdhdhd
-Message: hshs
-Type: visa-processing
-Time: 2025-04-17 04:33:40
-
-Name: Edsil Derpo Grefalda
-Email: edsiljeremias@gmail.com
-Phone: 09125518690
-Subject: diwow
-Message: jaha
-Type: flight-bookings
-Time: 2025-04-17 04:38:57
-
-Name: Edsil Grefalda
-Email: edsiljeremias@gmail.com
-Phone: 0912345689
-Subject: hahah
-Message: hahah
-Type: flight-bookings
-Time: 2025-04-17 04:44:55
-
-Name: edsa haha
-Email: edsiljeremias@gmail.com
-Phone: 09123456
-Subject: hahah
-Message: hahahah oho
-Type: flight-bookings
-Time: 2025-04-17 04:54:59
+Message: hshh
+Type: feedback
+Time: 2025-04-17 08:35:15
 
