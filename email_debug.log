@@ -20,3 +20,14 @@
 [2025-04-17 08:35:09] Email recipients configured
 [2025-04-17 08:35:09] Email content prepared, attempting to send
 [2025-04-17 08:35:15] Email sent successfully
+[2025-04-17 08:47:40] Form processing started
+[2025-04-17 08:47:40] Configuration loaded
+[2025-04-17 08:47:40] Form submitted via POST
+[2025-04-17 08:47:40] Form data received - Name: edas, Email: edsi@gmail.com, Subject: haha
+[2025-04-17 08:47:40] Form validation passed
+[2025-04-17 08:47:40] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'explore_maps'
+[2025-04-17 08:47:40] Setting up PHPMailer
+[2025-04-17 08:47:40] SMTP settings configured
+[2025-04-17 08:47:40] Email recipients configured
+[2025-04-17 08:47:40] Email content prepared, attempting to send
+[2025-04-17 08:47:44] Email sent successfully

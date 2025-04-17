@@ -10,7 +10,7 @@ define('SMTP_PASSWORD', 'nqxf brra tzit ckac'); // Your app password
 define('SMTP_PORT', 587);
 define('SMTP_ENCRYPTION', 'tls');
 define('EMAIL_FROM_NAME', 'Explore Maps Travel & Tours - Sorsogon');
-define('EMAIL_TO', 'edsiljeremias@gmail.com'); // Where to send inquiries (your email
+define('EMAIL_TO', 'edsiljeremias@gmail.com'); // Where to send inquiries (your email)
 
 // Database Configuration
 define('DB_HOST', 'localhost');

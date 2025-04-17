@@ -34,6 +34,7 @@
                     <li><a href="company-profile.html">Company Profile</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Our Services</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
                     <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
                     <li><a href="contact.html" class="active">Contact Us</a></li>
                 </ul>
@@ -112,7 +113,7 @@
             </div>
             <div class="contact-content">
                 <div class="form-container">
-                    <!-- Form with company email restriction -->
+                    <!-- MODIFIED FORM: Removed email restriction -->
                     <form id="contactForm" class="contact-form" method="POST" action="process-form.php" onsubmit="return true;">
                         <input type="hidden" name="form_source" value="contact_html_direct">
                         
@@ -122,7 +123,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter email address">
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
@@ -266,6 +267,7 @@
                         <li><a href="company-profile.html">Company Profile</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Our Services</a></li>
+                        <li><a href="accommodation.html">Accommodation</a></li>
                         <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
@@ -307,40 +309,6 @@
                 });
             }, 100);
         });
-    </script>
-
-    <script>
-    // Check for URL parameters when the page loads
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const error = urlParams.get('error');
-        
-        // If there's an email_not_found error
-        if (error === 'email_not_found') {
-            // Create error message element
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.style.backgroundColor = '#ffebee';
-            errorDiv.style.color = '#c62828';
-            errorDiv.style.padding = '10px';
-            errorDiv.style.borderRadius = '5px';
-            errorDiv.style.marginBottom = '10px';
-            errorDiv.style.textAlign = 'left';
-            errorDiv.style.fontWeight = 'bold';
-            errorDiv.style.fontSize = '14px';
-            errorDiv.innerHTML = 'Email not authorized. Please use company email address.';
-            
-            // Find the email label and insert the error message above it
-            const emailField = document.getElementById('email');
-            const emailFormGroup = emailField.closest('.form-group');
-            emailFormGroup.insertBefore(errorDiv, emailFormGroup.firstChild);
-            
-            // Highlight the email field
-            emailField.style.borderColor = '#c62828';
-            emailField.focus();
-        }
-    });
     </script>
 </body>
 </html>
