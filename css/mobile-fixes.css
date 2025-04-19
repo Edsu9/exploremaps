@@ -38,28 +38,60 @@
     width: 100% !important;
   }
 
-  /* Mobile menu improvements */
+  /* Mobile menu improvements - DROPDOWN STYLE */
   .menu-toggle {
     display: block !important;
     cursor: pointer !important;
     z-index: 1000 !important;
   }
 
+  /* Change navigation to dropdown style */
   .nav-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 80% !important;
-    height: 100vh !important;
+    position: absolute !important;
+    top: 100% !important; /* Position right below the header */
+    left: 0 !important;
+    width: 100% !important; /* Full width */
+    height: auto !important; /* Auto height instead of 100vh */
     background-color: white !important;
     transition: all 0.3s ease !important;
     z-index: 999 !important;
-    padding-top: 80px !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    padding: 0 !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    display: none !important; /* Hidden by default */
+    flex-direction: column !important;
   }
 
   .nav-menu.active {
+    display: flex !important; /* Show when active */
     left: 0 !important;
+  }
+
+  /* Navigation menu links - MUCH LARGER */
+  .nav-menu li {
+    margin: 0 !important;
+    width: 100% !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+  }
+
+  .nav-menu li:last-child {
+    border-bottom: none !important;
+  }
+
+  .nav-menu li a {
+    font-size: 1.6rem !important; /* Large font size */
+    padding: 15px 20px !important; /* Padding for easier tapping */
+    font-weight: 600 !important; /* Make it bolder */
+    color: #0047ab !important; /* Make it blue for better visibility */
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Make the active link more prominent */
+  .nav-menu li a.active {
+    color: #ffa500 !important; /* Orange color for active link */
+    font-weight: 700 !important;
+    background-color: rgba(0, 71, 171, 0.05) !important; /* Light blue background */
   }
 }
 
@@ -572,4 +604,104 @@ body .cta-section-new p {
 /* Ensure mobile menu stays above other content */
 .nav-menu.active {
   z-index: 1050 !important;
+}
+
+/* Add these styles at the top of the file to ensure they take precedence */
+
+/* Fix the gap between header and banner - completely remove margin */
+header {
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
+  box-shadow: none !important; /* Remove shadow that might create visual gap */
+}
+
+.combined-banner-section {
+  margin-top: 0 !important; /* Remove all margin to eliminate gap */
+  padding-top: 70px !important; /* Add padding instead of margin to maintain spacing for fixed header */
+}
+
+@media screen and (max-width: 768px) {
+  .combined-banner-section {
+    padding-top: 60px !important; /* Adjust for smaller header on mobile */
+  }
+
+  /* Find and replace the mobile logo text section with this more aggressive fix */
+
+  /* Fix for the logo text on mobile to display on a single line */
+  @media screen and (max-width: 768px) {
+    /* Completely restructure the logo area */
+    .logo {
+      display: flex !important;
+      align-items: center !important;
+      max-width: 80% !important;
+    }
+
+    /* Make logo image smaller */
+    .logo img {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      margin-right: 8px !important;
+    }
+
+    /* Force logo text container to be a flex container */
+    .logo-text {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+    }
+
+    /* Make company name and tagline appear on the same line */
+    .logo-text h1,
+    .logo-text p {
+      display: inline-block !important;
+      white-space: nowrap !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .logo-text h1 {
+      font-size: 0.9rem !important;
+      margin-right: 5px !important;
+    }
+
+    .logo-text p {
+      font-size: 0.8rem !important;
+    }
+
+    /* SIGNIFICANTLY increase navigation link font size */
+    .nav-menu li a {
+      font-size: 1.4rem !important; /* Much larger font size */
+      padding: 15px 0 !important; /* More padding for easier tapping */
+      font-weight: 600 !important; /* Make it bolder */
+    }
+
+    /* Add more space between menu items */
+    .nav-menu li {
+      margin-bottom: 20px !important;
+    }
+  }
+
+  /* Find and replace the mobile navigation section with this more aggressive fix */
+
+  /* Ensure the banner takes full width */
+  .combined-banner-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Fix for any other elements that might create spacing */
+  body {
+    overflow-x: hidden !important;
+  }
+
+  /* Remove any potential padding from container elements */
+  .container-fluid,
+  .container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }

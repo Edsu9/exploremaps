@@ -19,13 +19,40 @@ use PHPMailer\PHPMailer\Exception;
 // Load Composer's autoloader
 require_once 'vendor/autoload.php';
 
-// Load configuration
-require_once 'config.php';
+// Try to load configuration, but don't fail if it doesn't exist
+$config_loaded = false;
+if (file_exists('config.php')) {
+    try {
+        require_once 'config.php';
+        $config_loaded = true;
+        debug_log("Configuration loaded successfully");
+    } catch (Exception $e) {
+        debug_log("Error loading configuration: " . $e->getMessage());
+    }
+}
 
-debug_log("Configuration loaded");
+// Define default values if config is not loaded
+if (!$config_loaded) {
+    debug_log("Using default configuration values");
+    define('SMTP_HOST', 'smtp.gmail.com');
+    define('SMTP_USERNAME', 'edsiljeremias@gmail.com');
+    define('SMTP_PASSWORD', 'nqxf brra tzit ckac');
+    define('SMTP_PORT', 587);
+    define('SMTP_ENCRYPTION', 'tls');
+    define('EMAIL_FROM', 'edsiljeremias@gmail.com');
+    define('EMAIL_FROM_NAME', 'Explore Maps Travel & Tours - Sorsogon');
+    define('EMAIL_TO', 'edsiljeremias@gmail.com');
+    define('DEBUG_MODE', true);
+}
 
-// Database connection function
+// Database connection function - now with better error handling
 function connectToDatabase() {
+    // Check if database constants are defined
+    if (!defined('DB_HOST') || !defined('DB_NAME') || !defined('DB_USER') || !defined('DB_PASSWORD')) {
+        debug_log("Database constants not defined - skipping database connection");
+        return null;
+    }
+    
     try {
         $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
         // Set the PDO error mode to exception
@@ -78,66 +105,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     debug_log("Form validation passed");
     
-    // Save to database if connection is available
-    $dbConn = connectToDatabase();
-    if ($dbConn) {
-        try {
-            // Prepare SQL statement
-            $stmt = $dbConn->prepare("INSERT INTO inquiries (name, email, phone, subject, message, inquiry_type, submission_date, ip_address) 
-                                     VALUES (:name, :email, :phone, :subject, :message, :inquiry_type, NOW(), :ip_address)");
-            
-            // Bind parameters
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':phone', $phone);
-            $stmt->bindParam(':subject', $subject);
-            $stmt->bindParam(':message', $message);
-            $stmt->bindParam(':inquiry_type', $inquiryType);
-            $stmt->bindParam(':ip_address', $_SERVER['REMOTE_ADDR']);
-            
-            // Execute the statement
-            $stmt->execute();
-            
-            debug_log("Inquiry saved to database successfully. ID: " . $dbConn->lastInsertId());
-        } catch(PDOException $e) {
-            // Log error but continue with email sending
-            debug_log("Database error: " . $e->getMessage());
+    // Try to save to database if connection is available, but don't fail if it doesn't work
+    try {
+        $dbConn = connectToDatabase();
+        if ($dbConn) {
+            try {
+                // Prepare SQL statement
+                $stmt = $dbConn->prepare("INSERT INTO inquiries (name, email, phone, subject, message, inquiry_type, submission_date, ip_address) 
+                                         VALUES (:name, :email, :phone, :subject, :message, :inquiry_type, NOW(), :ip_address)");
+                
+                // Bind parameters
+                $stmt->bindParam(':name', $name);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':phone', $phone);
+                $stmt->bindParam(':subject', $subject);
+                $stmt->bindParam(':message', $message);
+                $stmt->bindParam(':inquiry_type', $inquiryType);
+                $stmt->bindParam(':ip_address', $_SERVER['REMOTE_ADDR']);
+                
+                // Execute the statement
+                $stmt->execute();
+                
+                debug_log("Inquiry saved to database successfully. ID: " . $dbConn->lastInsertId());
+            } catch(PDOException $e) {
+                // Log error but continue with email sending
+                debug_log("Database error: " . $e->getMessage());
+            }
+        } else {
+            debug_log("Database connection not available - skipping database save");
         }
+    } catch (Exception $e) {
+        debug_log("Exception during database operation: " . $e->getMessage());
+        // Continue with email sending
     }
     
-  // Create email content - Plain text version
-  $plainTextContent = "EXPLORE MAPS TRAVEL & TOURS - SORSOGON
-";
-  $plainTextContent .= "===========================================
-
-";
-  $plainTextContent .= "CONTACT DETAILS:
-";
-  $plainTextContent .= "Name: $name
-";
-  $plainTextContent .= "Email: $email
-";
-  $plainTextContent .= "Phone: " . (!empty($phone) ? $phone : "Not provided") . "
-";
-  $plainTextContent .= "Inquiry Type: $inquiryType
-
-";
-  $plainTextContent .= "MESSAGE DETAILS:
-";
-  $plainTextContent .= "Subject: $subject
-
-";
-  $plainTextContent .= "Message:
-$message
-
-";
-  $plainTextContent .= "===========================================
-";
-  $plainTextContent .= "This inquiry was submitted on " . date('F j, Y \a\t g:i a') . "
-";
-  $plainTextContent .= "From IP: " . $_SERVER['REMOTE_ADDR'] . "
-";
-  
     // Get a human-readable inquiry type label
     $inquiryTypeLabel = getInquiryTypeLabel($inquiryType);
     
@@ -160,7 +161,7 @@ $message
     <body>
         <div class='container'>
             <div class='header'>
-                <h2>New Inquiry from Explore Maps Travel & Tours - Sorsogon</h2>
+                <h2>New Inquiry from $name</h2>
             </div>
             <div class='content'>
                 <div class='section'>
@@ -190,6 +191,21 @@ $message
     </html>
     ";
     
+    // Create plain text version
+    $plainTextContent = "NEW INQUIRY FROM $name\n";
+    $plainTextContent .= "===========================================\n\n";
+    $plainTextContent .= "CONTACT DETAILS:\n";
+    $plainTextContent .= "Name: $name\n";
+    $plainTextContent .= "Email: $email\n";
+    $plainTextContent .= "Phone: " . (!empty($phone) ? $phone : "Not provided") . "\n";
+    $plainTextContent .= "Inquiry Type: $inquiryTypeLabel\n\n";
+    $plainTextContent .= "MESSAGE DETAILS:\n";
+    $plainTextContent .= "Subject: $subject\n\n";
+    $plainTextContent .= "Message:\n$message\n\n";
+    $plainTextContent .= "===========================================\n";
+    $plainTextContent .= "This inquiry was submitted on " . date('F j, Y \a\t g:i a') . "\n";
+    $plainTextContent .= "From IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
+    
     // Create a new PHPMailer instance
     $mail = new PHPMailer(true);
     
@@ -217,29 +233,22 @@ $message
         
         debug_log("SMTP settings configured");
         
-        // Recipients
-        // Use the client's email directly in the From field with their name
-        $mail->setFrom($email, $name);
-
-        // Set the envelope sender (Return-Path) to your actual email to avoid bounces
-        $mail->Sender = SMTP_USERNAME;
-
-        // Add a Reply-To header with the client's email
-        $mail->addReplyTo($email, $name);
-
-        // Set the recipient
+        // STANDARD APPROACH: Use your own email as the sender
+        $mail->setFrom(SMTP_USERNAME, "$name");
+        
+        // Set the recipient (your company email)
         $mail->addAddress(EMAIL_TO, 'Explore Maps Travel & Tours - Sorsogon');
         
-        // Try to set a custom header to display only the name
-        $mail->addCustomHeader('X-Sender-Name', $name);
+        // Add Reply-To header with the client's actual email
+        $mail->addReplyTo($email, $name);
         
         debug_log("Email recipients configured");
         
         // Content
         $mail->isHTML(true);                       // Set email format to HTML
-        $mail->Subject = "New Inquiry from $name: $subject ($inquiryTypeLabel)";
+        $mail->Subject = "New Inquiry from $name: $subject";
         $mail->Body    = $htmlContent;
-        $mail->AltBody = strip_tags(str_replace('<br>', "\n", $htmlContent));
+        $mail->AltBody = $plainTextContent;
         
         debug_log("Email content prepared, attempting to send");
         
