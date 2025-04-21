@@ -60,10 +60,15 @@ ul {
   list-style: none;
 }
 
+/* Update image styling to ensure all images are fully visible and clear */
+
+/* Base image styles */
 img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .container {
@@ -227,7 +232,7 @@ img {
   font-size: 0.9em;
 }
 
-/* Header Styles */
+/* Update the header styles to ensure it connects with the banner */
 header {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: none; /* Remove shadow that might create visual gap */
@@ -239,8 +244,9 @@ header {
   transition: all 0.4s ease;
   width: 100%;
   padding: 10px 0;
-  margin-bottom: 0;
-  border-bottom: none;
+  margin-bottom: 0; /* Remove margin */
+  border-bottom: none; /* Remove border */
+  height: 70px; /* Fixed height */
 }
 
 header.scrolled {
@@ -264,11 +270,12 @@ header .container {
   max-width: 40%; /* Limit logo section width */
 }
 
+/* Improve logo image */
 .logo img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: var(--transition);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
 }
 
 .logo-text {
@@ -313,6 +320,16 @@ nav {
   gap: 15px; /* Reduce gap between menu items */
   justify-content: flex-end; /* Right align menu items */
   margin-left: auto; /* Push menu to the right */
+}
+
+@media screen and (max-width: 992px) {
+  .nav-menu {
+    gap: 10px; /* Even smaller gap on medium screens */
+  }
+
+  .nav-menu li a {
+    font-size: 0.85rem; /* Even smaller font on medium screens */
+  }
 }
 
 .nav-menu li {
@@ -375,6 +392,18 @@ nav {
   z-index: 1;
 }
 
+/* Update banner styles to connect with header */
+.page-banner,
+.combined-banner-section,
+.hero {
+  margin-top: 0 !important; /* Remove margin completely */
+  padding-top: 70px !important; /* Add padding to account for fixed header height */
+  background-size: cover !important;
+  background-position: center !important;
+  height: 500px !important; /* Increase height to show more of the image */
+  overflow: hidden !important;
+}
+
 /* Page Banner */
 .page-banner {
   background-size: cover;
@@ -392,6 +421,28 @@ nav {
   width: 100%;
 }
 
+/* Banner images */
+.page-banner,
+.combined-banner-section,
+.company-banner,
+.about-banner,
+.services-banner,
+.attractions-banner,
+.contact-banner {
+  background-size: cover !important;
+  background-position: center !important;
+  height: 400px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Adjust banner overlay to make image more visible */
+.page-banner::before,
+.combined-banner-section::before,
+.hero-overlay {
+  opacity: 0.4 !important; /* Make overlay less opaque */
+}
+
 .page-banner::before {
   content: "";
   position: absolute;
@@ -402,6 +453,11 @@ nav {
   background: linear-gradient(135deg, rgba(0, 71, 171, 0.5), rgba(255, 165, 0, 0.5));
   opacity: 0.6;
   z-index: 1;
+}
+
+/* Adjust banner content position */
+.banner-content {
+  padding-top: 50px !important; /* Move content down a bit */
 }
 
 .banner-content {
@@ -469,6 +525,17 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+  header {
+    height: 60px !important; /* Smaller header on mobile */
+  }
+
+  .page-banner,
+  .combined-banner-section,
+  .hero {
+    padding-top: 60px !important; /* Adjust for smaller header */
+    height: 300px !important; /* Smaller height on mobile */
+  }
+
   .page-banner {
     height: 300px;
     margin-top: 70px;
@@ -523,6 +590,20 @@ nav {
   color: var(--primary-color);
   margin-bottom: 20px;
   display: inline-block;
+}
+
+/* Improve icon visibility */
+.service-icon,
+.info-icon,
+.value-icon,
+.cert-icon,
+.toggle-icon {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 2.5rem !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 20px !important;
 }
 
 .info-card h3 {
@@ -654,6 +735,14 @@ nav {
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Improve map images */
+.map-image img,
+.map-placeholder img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 .map-placeholder img {
@@ -824,6 +913,46 @@ nav {
   overflow: hidden;
 }
 
+/* Improve attraction images */
+.attraction-image {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* Remove any border radius that might create gaps */
+}
+
+.attraction-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* Fix for the attraction item to remove any extra spacing */
+.attraction-item {
+  display: flex !important;
+  gap: 0 !important; /* Remove gap between image and content */
+  margin-bottom: 60px !important;
+  background-color: white !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  padding: 0 !important; /* Remove any padding */
+}
+
+/* Ensure content has proper padding but images don't */
+.attraction-content {
+  flex: 1 !important;
+  padding: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .attraction-image img {
   width: 100%;
   height: 100%;
@@ -928,6 +1057,13 @@ nav {
   overflow: hidden;
 }
 
+/* Improve CTA section background */
+.cta-section {
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+
 .cta-section::before {
   content: "";
   position: absolute;
@@ -995,6 +1131,15 @@ footer::before {
   height: 80px;
   border-radius: 50%;
   margin-bottom: 15px;
+}
+
+/* Improve footer logo */
+.footer-logo img {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  margin-bottom: 15px !important;
 }
 
 .footer-logo p {
@@ -1203,6 +1348,14 @@ footer::before {
   padding-bottom: 100px;
 }
 
+/* Improve hero section */
+.hero {
+  background-size: cover !important;
+  background-position: center !important;
+  height: auto !important;
+  min-height: 80vh !important;
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -1320,6 +1473,20 @@ footer::before {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Improve about section images */
+.about-image {
+  height: 400px !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+}
+
+.about-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
 }
 
 .about-image img {
@@ -1989,6 +2156,20 @@ footer::before {
   overflow: hidden;
 }
 
+/* Improve destination card images */
+.destination-image {
+  height: 250px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.destination-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
+}
+
 .destination-image img {
   width: 100%;
   height: 100%;
@@ -2254,12 +2435,57 @@ footer::before {
   }
 }
 
-@media screen and (max-width: 992px) {
-  .nav-menu {
-    gap: 10px; /* Even smaller gap on medium screens */
-  }
+/* Improve card images */
+.card-img-top,
+.card img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
 
-  .nav-menu li a {
-    font-size: 0.85rem; /* Even smaller font on medium screens */
-  }
+/* Update the CTA section styling to ensure buttons are centered */
+.cta-section-new .container,
+.combined-banner-section .container,
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Ensure all CTA buttons are centered */
+.cta-section-new .btn,
+.combined-banner-section .btn,
+.banner-content .btn {
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
+}
+
+/* Fix for the specific company profile page banner */
+.company-banner .banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.company-banner .banner-content p {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Remove any floating or absolute positioning that might affect buttons */
+.get-in-touch-btn,
+.cta-btn,
+.primary-btn,
+.secondary-btn {
+  position: relative;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
 }

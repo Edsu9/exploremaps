@@ -1,0 +1,202 @@
+/* Light blue background styles for all sections */
+
+/* Apply to all main content sections that don't already have a background */
+section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+    background-color: #f0f8ff !important; /* Light sky blue background */
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Add subtle pattern overlay to the background */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230047ab' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  /* Style section headers on light blue backgrounds */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .section-header
+    h2 {
+    color: #0047ab !important; /* Deeper blue for headings */
+  }
+  
+  /* Add an accent line under section headers */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .section-header
+    h2::after {
+    background: linear-gradient(to right, #0047ab, #ffa500) !important; /* Blue to orange gradient */
+    height: 4px !important;
+    width: 80px !important;
+  }
+  
+  /* Style section header paragraphs */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .section-header
+    p {
+    color: #555 !important;
+  }
+  
+  /* Add alternating background pattern */
+  section:nth-child(odd):not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+    background-color: #f0f8ff !important; /* Light sky blue */
+  }
+  
+  section:nth-child(even):not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not(
+      [class*="bg-"]
+    ) {
+    background-color: #f5f9ff !important; /* Slightly lighter blue */
+  }
+  
+  /* Add subtle border to separate sections */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+    border-top: 1px solid rgba(0, 71, 171, 0.1);
+    border-bottom: 1px solid rgba(0, 71, 171, 0.1);
+  }
+  
+  /* Add padding to sections for better spacing */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+    padding: 60px 0 !important;
+  }
+  
+  /* Style cards and content boxes on the light blue background */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .info-card,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .service-card,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .value-card,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .cert-item,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .service-item,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .mission-box,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .vision-box,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .form-container,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .map-directions,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) .faq-item {
+    background-color: #ffffff !important; /* White background for cards */
+    box-shadow: 0 10px 30px rgba(0, 71, 171, 0.08) !important;
+  }
+  
+  /* Add hover effect for cards */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .info-card:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .service-card:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .value-card:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .cert-item:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .service-item:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .mission-box:hover,
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])
+    .vision-box:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 40px rgba(0, 71, 171, 0.12) !important;
+  }
+  
+  /* Style specific sections */
+  .about-preview,
+  .services-preview,
+  .popular-destinations,
+  .contact-info,
+  .contact-form-section,
+  .map-section,
+  .faq-section,
+  .attractions-intro,
+  .featured-attractions,
+  .attractions-map,
+  .about-content-section,
+  .mission-vision,
+  .core-values,
+  .company-profile-section,
+  .services-content-section {
+    background-color: #f0f8ff !important; /* Light sky blue */
+    position: relative;
+  }
+  
+  /* Add the pattern overlay to specific sections */
+  .about-preview::before,
+  .services-preview::before,
+  .popular-destinations::before,
+  .contact-info::before,
+  .contact-form-section::before,
+  .map-section::before,
+  .faq-section::before,
+  .attractions-intro::before,
+  .featured-attractions::before,
+  .attractions-map::before,
+  .about-content-section::before,
+  .mission-vision::before,
+  .core-values::before,
+  .company-profile-section::before,
+  .services-content-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230047ab' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  /* Ensure content is above the pattern overlay */
+  .about-preview .container,
+  .services-preview .container,
+  .popular-destinations .container,
+  .contact-info .container,
+  .contact-form-section .container,
+  .map-section .container,
+  .faq-section .container,
+  .attractions-intro .container,
+  .featured-attractions .container,
+  .attractions-map .container,
+  .about-content-section .container,
+  .mission-vision .container,
+  .core-values .container,
+  .company-profile-section .container,
+  .services-content-section .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Alternate background colors for visual interest */
+  .about-preview,
+  .contact-info,
+  .faq-section,
+  .attractions-intro,
+  .about-content-section,
+  .core-values,
+  .services-content-section {
+    background-color: #f0f8ff !important; /* Light sky blue */
+  }
+  
+  .services-preview,
+  .popular-destinations,
+  .contact-form-section,
+  .map-section,
+  .featured-attractions,
+  .attractions-map,
+  .mission-vision,
+  .company-profile-section {
+    background-color: #f5f9ff !important; /* Slightly lighter blue */
+  }
+  
+  /* Make sure the background doesn't affect text readability */
+  section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) p {
+    color: #333 !important;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+      padding: 40px 0 !important;
+    }
+  }
+  

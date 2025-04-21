@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Menu fix script loaded")
 
-  // Fix for mobile menu toggle - DROPDOWN STYLE
+  // Fix for mobile menu toggle - DROPDOWN STYLE with animations
   const menuToggle = document.querySelector(".menu-toggle")
   const navMenu = document.querySelector(".nav-menu")
 
@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Remove any existing event listeners by cloning
     const newMenuToggle = menuToggle.cloneNode(true)
     menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle)
+
+    // Set animation delay for each menu item
+    const menuItems = navMenu.querySelectorAll("li")
+    menuItems.forEach((item, index) => {
+      item.style.setProperty("--item-index", index)
+    })
 
     // Add new event listener
     newMenuToggle.addEventListener("click", function (e) {
@@ -19,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Toggle the active class
       navMenu.classList.toggle("active")
 
-      // Toggle the icon
+      // Toggle the icon with animation
       const icon = this.querySelector("i")
       if (icon) {
         if (icon.classList.contains("fa-bars")) {

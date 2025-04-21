@@ -1,0 +1,152 @@
+/* Text spacing fixes for justified text */
+
+/* Global text justification fix */
+p,
+.card-text,
+div[class*="text"],
+div[class*="content"] p,
+.info-card p,
+.service-card p,
+.value-card p,
+.service-text p,
+.destination-info p,
+.attraction-content p,
+.about-text p,
+.mission-box p,
+.vision-box p,
+.core-values p,
+.profile-content p,
+.intro-content p,
+.faq-answer p {
+  text-align: justify !important;
+  word-spacing: -0.5px !important; /* Slightly reduce word spacing */
+  letter-spacing: -0.2px !important; /* Slightly reduce letter spacing */
+  text-justify: inter-word !important;
+  hyphens: auto !important;
+  -webkit-hyphens: auto !important;
+  -ms-hyphens: auto !important;
+}
+
+/* Fix for cards with text */
+.card,
+.card-body,
+.card-text,
+.service-card,
+.value-card,
+.info-card,
+.destination-card,
+.attraction-content,
+.mission-box,
+.vision-box {
+  text-align: justify !important;
+  word-break: break-word !important;
+}
+
+/* Fix for core values cards */
+.value-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for service cards */
+.service-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for process steps */
+.process-step p,
+.booking-step p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure text fills available width */
+p,
+.card-text,
+.info-card p,
+.service-card p,
+.value-card p {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+}
+
+/* Fix for specific card layouts */
+.value-card,
+.service-card,
+.info-card,
+.process-step,
+.booking-step {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.value-card h3,
+.service-card h3,
+.info-card h3,
+.process-step h3,
+.booking-step h3 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+}
+
+/* Fix for icons to ensure they're centered */
+.value-icon,
+.service-icon,
+.info-icon,
+.step-icon {
+  text-align: center !important;
+  margin: 0 auto 15px !important;
+}
+
+/* Ensure paragraphs have proper spacing between them */
+p + p {
+  margin-top: 10px !important;
+}
+
+/* Fix for mobile devices */
+@media screen and (max-width: 768px) {
+  p,
+  .card-text,
+  .info-card p,
+  .service-card p,
+  .value-card p,
+  .service-text p,
+  .destination-info p,
+  .attraction-content p,
+  .about-text p,
+  .mission-box p,
+  .vision-box p,
+  .core-values p,
+  .profile-content p,
+  .intro-content p,
+  .faq-answer p {
+    word-spacing: -0.7px !important; /* Further reduce word spacing on mobile */
+    letter-spacing: -0.3px !important; /* Further reduce letter spacing on mobile */
+    font-size: 0.9rem !important; /* Slightly smaller font on mobile */
+  }
+}
+
+/* Fix for section header subtitles to ensure they're centered */
+.section-header p {
+  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Specific fix for "The principles that guide us" text */
+.core-values .section-header p {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 auto !important;
+}

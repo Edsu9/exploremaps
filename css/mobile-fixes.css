@@ -1,3 +1,82 @@
+/* Add these rules at the top of the file to ensure they take precedence */
+
+/* Fix for justified text to remove excessive spacing */
+p,
+.card-text,
+.info-card p,
+.service-card p,
+.value-card p,
+.service-text p,
+.destination-info p,
+.attraction-content p,
+.about-text p,
+.mission-box p,
+.vision-box p,
+.core-values p,
+.profile-content p,
+.intro-content p,
+.faq-answer p {
+  text-align: justify !important;
+  word-spacing: normal !important; /* Reset word spacing */
+  letter-spacing: normal !important; /* Reset letter spacing */
+  text-justify: inter-word !important; /* Use inter-word justification */
+  hyphens: auto !important; /* Enable hyphenation */
+  -webkit-hyphens: auto !important;
+  -ms-hyphens: auto !important;
+}
+
+/* Fix for cards with justified text */
+.service-card,
+.value-card,
+.info-card,
+.destination-card,
+.attraction-content,
+.mission-box,
+.vision-box {
+  text-align: justify !important;
+  word-break: break-word !important;
+}
+
+/* Ensure no extra padding or margins are causing spacing issues */
+.service-card p,
+.value-card p,
+.info-card p,
+.destination-info p,
+.attraction-content p,
+.about-text p,
+.mission-box p,
+.vision-box p {
+  padding: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+/* Fix for specific card text in the images shown */
+.value-card p,
+.service-card p {
+  font-size: 0.95rem !important; /* Slightly smaller font to fit better */
+  line-height: 1.5 !important; /* Tighter line height */
+  word-spacing: -0.5px !important; /* Slightly reduce word spacing */
+}
+
+/* Fix for process steps text */
+.process-step p,
+.booking-step p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  word-spacing: -0.5px !important;
+}
+
+/* Add this to ensure text fills the available width */
+p,
+.card-text,
+.info-card p,
+.service-card p,
+.value-card p {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+}
+
 /* Mobile fixes for Explore Maps website */
 
 /* Fix for mobile menu and logo text visibility */
@@ -613,21 +692,54 @@ header {
   margin-bottom: 0 !important;
   border-bottom: none !important;
   box-shadow: none !important; /* Remove shadow that might create visual gap */
+  height: 70px !important; /* Set fixed height for header */
 }
 
-.combined-banner-section {
+/* CRITICAL FIX: Make header and banner connect seamlessly */
+.combined-banner-section,
+.page-banner,
+.hero {
   margin-top: 0 !important; /* Remove all margin to eliminate gap */
-  padding-top: 70px !important; /* Add padding instead of margin to maintain spacing for fixed header */
+  padding-top: 70px !important; /* Add padding equal to header height */
+  position: relative !important;
+  top: 0 !important; /* Ensure it starts right at the top */
+}
+
+/* Ensure banner takes full height */
+.combined-banner-section,
+.page-banner {
+  height: 500px !important; /* Increase height to show more of the image */
+}
+
+/* Ensure banner image is fully visible */
+.combined-banner-section,
+.page-banner,
+.hero {
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden !important;
+}
+
+/* Adjust banner content position */
+.banner-content {
+  padding-top: 50px !important; /* Move content down a bit */
 }
 
 @media screen and (max-width: 768px) {
-  .combined-banner-section {
+  header {
+    height: 60px !important; /* Smaller header on mobile */
+  }
+
+  .combined-banner-section,
+  .page-banner,
+  .hero {
     padding-top: 60px !important; /* Adjust for smaller header on mobile */
+    height: 300px !important; /* Smaller height on mobile */
   }
 
   /* Find and replace the mobile logo text section with this more aggressive fix */
 
-  /* Fix for the logo text on mobile to display on a single line */
+  /* Fix for the logo text on mobile to display on two lines */
   @media screen and (max-width: 768px) {
     /* Completely restructure the logo area */
     .logo {
@@ -644,43 +756,32 @@ header {
       margin-right: 8px !important;
     }
 
-    /* Force logo text container to be a flex container */
+    /* Force logo text container to be a flex container with column direction */
     .logo-text {
       display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
+      flex-direction: column !important; /* Changed to column to stack text */
+      align-items: flex-start !important; /* Align text to the left */
       white-space: nowrap !important;
       overflow: hidden !important;
     }
 
-    /* Make company name and tagline appear on the same line */
-    .logo-text h1,
-    .logo-text p {
-      display: inline-block !important;
-      white-space: nowrap !important;
+    /* Style each line of text separately */
+    .logo-text h1 {
+      font-size: 1rem !important;
       margin: 0 !important;
       padding: 0 !important;
-    }
-
-    .logo-text h1 {
-      font-size: 0.9rem !important;
-      margin-right: 5px !important;
+      line-height: 1.2 !important;
+      display: block !important; /* Ensure it's on its own line */
+      width: 100% !important;
     }
 
     .logo-text p {
       font-size: 0.8rem !important;
-    }
-
-    /* SIGNIFICANTLY increase navigation link font size */
-    .nav-menu li a {
-      font-size: 1.4rem !important; /* Much larger font size */
-      padding: 15px 0 !important; /* More padding for easier tapping */
-      font-weight: 600 !important; /* Make it bolder */
-    }
-
-    /* Add more space between menu items */
-    .nav-menu li {
-      margin-bottom: 20px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1.2 !important;
+      display: block !important; /* Ensure it's on its own line */
+      width: 100% !important;
     }
   }
 
@@ -704,4 +805,405 @@ header {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
+}
+
+/* Add these styles to center the footer headings properly */
+
+/* Center all footer headings */
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Center the underline elements for all footer headings */
+.footer-links h3::after,
+.footer-contact h3::after,
+.footer-social h3::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Center the Quick Links list items */
+.footer-links ul {
+  text-align: center !important;
+  padding-left: 0 !important;
+}
+
+/* Center the Contact Us information */
+.footer-contact p {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Ensure the icons in Contact Us are properly aligned */
+.footer-contact p i {
+  margin-right: 10px !important;
+}
+
+/* Center the social media icons */
+.social-icons {
+  justify-content: center !important;
+}
+
+/* Add animation to the mobile menu toggle */
+@media screen and (max-width: 768px) {
+  /* Change navigation to dropdown style with animations */
+  .nav-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background-color: white !important;
+    transition: all 0.3s ease-in-out !important; /* Smooth transition */
+    z-index: 999 !important;
+    padding: 0 !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    display: block !important; /* Changed from none to block */
+    flex-direction: column !important;
+    opacity: 0 !important; /* Start with 0 opacity */
+    visibility: hidden !important; /* Hide it initially */
+    transform: translateY(-20px) !important; /* Start slightly above */
+    max-height: 0 !important; /* Start with no height */
+    overflow: hidden !important;
+  }
+
+  .nav-menu.active {
+    opacity: 1 !important; /* Fade in */
+    visibility: visible !important; /* Make it visible */
+    transform: translateY(0) !important; /* Move to correct position */
+    max-height: 1000px !important; /* Allow enough height for all items */
+    left: 0 !important;
+  }
+
+  /* Add animation to individual menu items */
+  .nav-menu li {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+    transition: all 0.3s ease !important;
+    transition-delay: calc(0.05s * var(--item-index, 0)) !important;
+  }
+
+  .nav-menu.active li {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Add animation to the menu toggle icon */
+  .menu-toggle i {
+    transition: transform 0.3s ease !important;
+  }
+
+  .menu-toggle i.fa-times {
+    transform: rotate(90deg) !important;
+  }
+}
+
+/* Add these image fixes to the mobile-fixes.css file */
+
+/* Ensure images are fully visible on mobile */
+@media screen and (max-width: 768px) {
+  /* Adjust banner heights for mobile */
+  .page-banner,
+  .combined-banner-section,
+  .company-banner,
+  .about-banner,
+  .services-banner,
+  .attractions-banner,
+  .contact-banner {
+    height: 300px !important;
+  }
+
+  /* Adjust attraction image height for mobile */
+  .attraction-image {
+    height: 300px !important;
+  }
+
+  /* Adjust destination image height for mobile */
+  .destination-image {
+    height: 200px !important;
+  }
+
+  /* Adjust about image height for mobile */
+  .about-image {
+    height: 300px !important;
+  }
+
+  /* Ensure images don't overflow their containers */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Improve card images on mobile */
+  .card-img-top,
+  .card img {
+    height: 200px !important;
+  }
+
+  /* Ensure icons are visible on mobile */
+  .service-icon,
+  .info-icon,
+  .value-icon,
+  .cert-icon {
+    font-size: 2rem !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Fix for image-heavy sections to ensure proper display */
+  .attraction-item,
+  .destination-card,
+  .service-card,
+  .info-card,
+  .value-card {
+    margin-bottom: 30px !important;
+  }
+
+  /* Ensure background images are properly sized */
+  .hero,
+  .cta-section,
+  .page-banner {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
+
+/* Fix for justified text to remove excessive spacing */
+p,
+.card-text,
+.info-card p,
+.service-card p,
+.value-card p,
+.service-text p,
+.destination-info p,
+.attraction-content p,
+.about-text p,
+.mission-box p,
+.vision-box p,
+.core-values p,
+.profile-content p,
+.intro-content p,
+.faq-answer p {
+  text-align: justify !important;
+  word-spacing: -0.5px !important; /* Slightly reduce word spacing */
+  letter-spacing: -0.2px !important; /* Slightly reduce letter spacing */
+  text-justify: inter-word !important;
+  hyphens: auto !important;
+  -webkit-hyphens: auto !important;
+  -ms-hyphens: auto !important;
+}
+
+/* Fix for cards with text */
+.card,
+.card-body,
+.card-text,
+.service-card,
+.value-card,
+.info-card,
+.destination-card,
+.attraction-content,
+.mission-box,
+.vision-box {
+  text-align: justify !important;
+  word-break: break-word !important;
+}
+
+/* Fix for core values cards */
+.value-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for service cards */
+.service-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for service cards */
+.service-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for process steps */
+.process-step p,
+.booking-step p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure text fills available width */
+p,
+.card-text,
+.info-card p,
+.service-card p,
+.value-card p {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+}
+
+/* Add light blue background to sections */
+section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"]) {
+  background-color: #f0f8ff !important; /* Light sky blue background */
+  position: relative;
+  z-index: 1;
+}
+
+/* Add subtle pattern overlay to the background */
+section:not(.hero):not(.combined-banner-section):not(.cta-section-new):not(.footer):not([class*="bg-"])::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230047ab' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Style specific sections */
+.about-preview,
+.services-preview,
+.popular-destinations,
+.contact-info,
+.contact-form-section,
+.map-section,
+.faq-section,
+.attractions-intro,
+.featured-attractions,
+.attractions-map,
+.about-content-section,
+.mission-vision,
+.core-values,
+.company-profile-section,
+.services-content-section {
+  background-color: #f0f8ff !important; /* Light sky blue */
+  position: relative;
+}
+
+/* Add the pattern overlay to specific sections */
+.about-preview::before,
+.services-preview::before,
+.popular-destinations::before,
+.contact-info::before,
+.contact-form-section::before,
+.map-section::before,
+.faq-section::before,
+.attractions-intro::before,
+.featured-attractions::before,
+.attractions-map::before,
+.about-content-section::before,
+.mission-vision::before,
+.core-values::before,
+.company-profile-section::before,
+.services-content-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230047ab' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Add these styles to ensure buttons are centered on all pages */
+
+/* Fix for company profile page button alignment */
+.company-banner .banner-content,
+.combined-banner-section .banner-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Ensure the button container is also centered */
+.banner-content .btn-container,
+.cta-content .btn-container {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-top: 25px !important;
+}
+
+/* Fix for any specific button that might have custom positioning */
+.get-in-touch-btn,
+.book-tour-btn,
+.primary-btn,
+.secondary-btn {
+  float: none !important;
+  position: relative !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: inline-flex !important;
+}
+
+/* Ensure the paragraph text is centered and has proper spacing before the button */
+.banner-content p,
+.cta-content p {
+  text-align: center !important;
+  margin-bottom: 25px !important;
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+/* Fix for any flex layout issues in the banner content */
+.banner-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure consistent spacing between elements */
+.banner-content h1,
+.cta-content h2 {
+  margin-bottom: 20px !important;
+}
+
+/* Fix for any absolute positioning that might be affecting the layout */
+.banner-content .btn,
+.cta-content .btn {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* Fix for section header subtitles to ensure they're centered */
+.section-header p {
+  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Specific fix for "The principles that guide us" text */
+.core-values .section-header p {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 auto !important;
 }

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Tourist Attractions - Explore Maps Travel and Tours</title>
+    <link rel="shortcut icon" href="public/icon.ico" type="image/x-icon">
+    <link rel="icon" href="public/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/mobile-fixes.css">
     <link rel="stylesheet" href="css/color-fixes.css">
@@ -13,6 +15,148 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/background-styles.css">
+    <link rel="stylesheet" href="css/text-spacing-fix.css">
+    <style>
+        /* Immediate fix for attraction items */
+        .attraction-item {
+            display: flex !important;
+            gap: 0 !important;
+            margin-bottom: 60px !important;
+            background-color: white !important;
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+            padding: 0 !important;
+        }
+        
+        .attraction-image {
+            flex: 1;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            overflow: hidden !important;
+            height: auto !important;
+            min-height: 400px !important;
+            position: relative !important;
+        }
+        
+        .attraction-image img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+        
+        .attraction-content {
+            flex: 1 !important;
+            padding: 40px !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        .attraction-item.reverse {
+            flex-direction: row-reverse !important;
+        }
+        
+        /* New styles for festivals, delicacies, products sections */
+        .category-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .category-section:nth-child(even) {
+            background-color: #ffffff;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .category-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-content h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        
+        .category-content p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0277bd;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        @media screen and (max-width: 992px) {
+            .attraction-item, 
+            .attraction-item.reverse {
+                flex-direction: column !important;
+            }
+            
+            .attraction-image {
+                min-height: 300px !important;
+                width: 100% !important;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -43,20 +187,20 @@
     </header>
 
     <!-- Attractions Banner -->
-    <section class="combined-banner-section" style="background-image: url('images/capitol.jpg');">
-  <div class="banner-content">
-    <h1>Local Tourist Attractions</h1>
-  </div>
-</section>
+    <section class="combined-banner-section" style="background-image: url('images/attraction.jpeg');">
+        <div class="banner-content">
+            <h1>LOCAL TOURIST ATTRACTIONS</h1>
+        </div>
+    </section>
 
-<!-- Add CTA Section -->
-<section class="cta-section-new">
-  <div class="container">
-    <h2>Ready to Explore These Amazing Destinations?</h2>
-    <p>Let us help you plan the perfect Sorsogon adventure</p>
-    <a href="contact.html" class="btn primary-btn">Contact Us Today</a>
-  </div>
-</section>
+    <!-- Add CTA Section -->
+    <section class="cta-section-new">
+        <div class="container">
+            <h2>Ready to Explore These Amazing Destinations?</h2>
+            <p>Let us help you plan the perfect Sorsogon adventure</p>
+            <a href="contact.html" class="btn primary-btn">Contact Us Today</a>
+        </div>
+    </section>
 
     <!-- Attractions Introduction -->
     <section class="attractions-intro">
@@ -79,6 +223,11 @@
     <!-- Featured Attractions -->
     <section class="featured-attractions">
         <div class="container">
+            <div class="section-header">
+                <h2>Top Destinations</h2>
+                <p>Must-visit natural wonders in Sorsogon</p>
+            </div>
+            
             <!-- Donsol -->
             <div class="attraction-item">
                 <div class="attraction-image">
@@ -104,7 +253,6 @@
                     <h3>Bulusan Volcano Natural Park</h3>
                     <div class="attraction-details">
                         <span class="location"><i class="fas fa-map-marker-alt"></i> Bulusan, Sorsogon</span>
-                        <span class="rating">
                     </div>
                     <p>Often called the "Switzerland of the Orient" for its cool climate and lush landscapes, Bulusan Volcano Natural Park is a protected area showcasing the majestic Bulusan Volcano and its surrounding forests, lakes, and hot springs.</p>
                     <p>The centerpiece is Bulusan Lake, a serene crater lake surrounded by dense rainforest. Visitors can enjoy kayaking on the lake, trekking through the forest trails, relaxing in Masacrot Hot Springs, and birdwatching in this natural sanctuary.</p>
@@ -162,6 +310,182 @@
         </div>
     </section>
 
+    <!-- Festivals Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Vibrant Festivals</h2>
+                <p>Experience the colorful cultural celebrations of Sorsogon</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Kasanggayahan Festival dancers in colorful costumes" alt="Kasanggayahan Festival">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">October</span>
+                        <h4>Kasanggayahan Festival</h4>
+                        <p>A week-long celebration commemorating the founding of Sorsogon as a province. The festival features street dancing, trade fairs, cultural shows, and various competitions that showcase the province's rich heritage.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Pili Festival with traditional dancers and pili nut displays" alt="Pili Festival">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">June</span>
+                        <h4>Pili Festival</h4>
+                        <p>Celebrated in Sorsogon City, this festival honors the pili nut, one of the province's most important agricultural products. Activities include cooking competitions, cultural presentations, and a street parade featuring pili-themed floats.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Parau Festival with boats decorated with colorful banners" alt="Parau Festival">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">May</span>
+                        <h4>Parau Festival</h4>
+                        <p>Held in Gubat, this festival celebrates the town's fishing industry with a fluvial parade of decorated boats, fishing competitions, and seafood feasts. The highlight is the street dancing competition depicting fishing activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Delicacies Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Local Delicacies</h2>
+                <p>Savor the unique flavors of Sorsogon cuisine</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Bicol Express spicy pork dish with coconut milk" alt="Bicol Express">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Spicy</span>
+                        <h4>Bicol Express</h4>
+                        <p>A signature Bicolano dish made with pork, chili peppers, coconut milk, shrimp paste, and various spices. Sorsogon's version is known for its perfect balance of creaminess and heat.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Laing dish with taro leaves and coconut milk" alt="Laing">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Traditional</span>
+                        <h4>Laing</h4>
+                        <p>Dried taro leaves cooked in coconut milk with chili peppers, meat, and seafood. This creamy, spicy dish is a staple in Bicolano cuisine and is often served with steamed rice.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Pili nuts and pili nut desserts" alt="Pili Nut Delicacies">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Sweet</span>
+                        <h4>Pili Nut Delicacies</h4>
+                        <p>Various sweet treats made from the native pili nut, including mazapan de pili (pili marzipan), pili tarts, and candied pili nuts. These delicacies showcase the versatility of this nutritious nut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Products Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Local Products</h2>
+                <p>Bring home authentic souvenirs from Sorsogon</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Abaca fiber products and handicrafts" alt="Abaca Products">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Handicraft</span>
+                        <h4>Abaca Products</h4>
+                        <p>Handcrafted items made from abaca fiber, including bags, placemats, hats, and home decor. Sorsogon is known for its high-quality abaca, often called Manila hemp, which is prized for its strength and versatility.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Pili oil products and skincare items" alt="Pili Oil Products">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Wellness</span>
+                        <h4>Pili Oil Products</h4>
+                        <p>Natural skincare and wellness products made from pili oil, which is extracted from pili nuts. These include soaps, lotions, massage oils, and lip balms known for their moisturizing and anti-aging properties.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Traditional woven mats with colorful patterns" alt="Banig Mats">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Traditional</span>
+                        <h4>Banig Mats</h4>
+                        <p>Intricately woven mats made from pandan or buri palm leaves. These colorful mats feature traditional patterns and designs unique to the region and are used as sleeping mats, wall decorations, or floor coverings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Destinations Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>More Destinations</h2>
+                <p>Discover these hidden gems across Sorsogon</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Paguriran Island with rock formations and lagoon" alt="Paguriran Island">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Island</span>
+                        <h4>Paguriran Island</h4>
+                        <p>A small island in Bacon, Sorsogon City, featuring a stunning lagoon surrounded by limestone formations. During low tide, visitors can walk to the island and swim in its crystal-clear waters.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Buhatan River with mangroves and boat tour" alt="Buhatan River">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Eco-Tourism</span>
+                        <h4>Buhatan River Cruise</h4>
+                        <p>Experience a relaxing boat ride along the Buhatan River in Sorsogon City, surrounded by lush mangroves and diverse wildlife. The cruise includes cultural presentations and a taste of local delicacies.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="/placeholder.svg?height=400&width=600&query=Prieto Diaz Mangrove Forest with boardwalk" alt="Prieto Diaz Mangrove Forest">
+                    </div>
+                    <div class="category-content">
+                        <span class="category-tag">Nature</span>
+                        <h4>Prieto Diaz Mangrove Forest</h4>
+                        <p>One of the most well-preserved mangrove forests in the Philippines, featuring a boardwalk that allows visitors to explore the ecosystem. It's a haven for birdwatchers and nature enthusiasts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Attractions Map -->
     <section class="attractions-map">
         <div class="container">
@@ -197,7 +521,6 @@
                         <li><a href="company-profile.html">Company Profile</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Our Services</a></li>
-                        <li><a href="accommodation.html">Accommodation</a></li>
                         <li><a href="local-attractions.html">Local Tourist Attractions</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
